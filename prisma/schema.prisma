@@ -15,37 +15,42 @@ enum Role {
   ADMIN
 }
 
-model Product {
-  id          String @id @default(uuid())
-  name        String
-  price       Int
-  description String
-  categories  String
-  image       String
+model User {
+  id       String    @id @default(uuid())
+  email    String    @unique
+  password Password?
+  orders   Order[]
+  role     Role      @default(USER)
+}
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  orders Order[]
+model Password {
+  id             String @id @default(uuid())
+  hashedPassword String
+  user           User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId         String @unique
 }
 
 model Order {
-  id String @id @default(uuid())
-
+  id        String   @id @default(uuid())
   userId    String?
   user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
   productId String?
   product   Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
-  address   String
+  adress    String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-model User {
-  id       String  @id @default(uuid())
-  email    String
-  password String
-  role     String
-  orders   Order[]
+model Product {
+  id          String   @id @default(uuid())
+  name        String
+  price       Int
+  description String
+  category    String
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  orders      Order[]
 }

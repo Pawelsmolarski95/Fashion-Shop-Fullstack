@@ -17,9 +17,9 @@ async getUserById(@Param('id', new ParseUUIDPipe()) id: string) {
     return userById;
 }
 
-@Get('/:email')
+@Get('/email/:email')
 async getUserByEmail(@Param('email') email: string) {
-    const userByEmail = await this.userService.getById(email);
+    const userByEmail = await this.userService.getByEmail(email);
     if (!userByEmail) throw new NotFoundException('User not exist');
     return userByEmail;
 }

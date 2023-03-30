@@ -27,7 +27,7 @@ export class UsersService {
     });
   }
   createNewUser(
-    userData: Omit<User, 'id' | 'order'>,
+    userData: Omit<User, 'id' | 'order' | 'role'>,
     password: Password['hashedPassword'],
   ): Promise<User> {
     return this.prismaService.user.create({

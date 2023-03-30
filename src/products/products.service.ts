@@ -4,23 +4,42 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class ProductsService {
-    constructor(private prismaService: PrismaService) {}
+  constructor(private prismaService: PrismaService) {}
 
-    getAll(): Promise<Product[]> { 
-        return this.prismaService.product.findMany()
-    }
+  getAll(): Promise<Product[]> {
+    return this.prismaService.product.findMany();
+  }
 
-    getById(id: Product['id']): Promise<Product | null> {
-        return this.prismaService.product.findUnique({
-            where: { id },
-        })
-    }
+  getById(id: Product['id']): Promise<Product | null> {
+    return this.prismaService.product.findUnique({
+      where: { id },
+    });
+  }
 
-    deleteById(id: Product['id']): Promise<Product | null> {
-        return this.prismaService.product.delete({
-            where: { id },
-        })
-    }
+  getByCategory(category: Product['category']): Promise<Product[] | null> {
+    return this.prismaService.product.findMany({ where: { category } });
+  }
 
+  deleteById(id: Product['id']): Promise<Product | null> {
+    return this.prismaService.product.delete({
+      where: { id },
+    });
+  }
 
+  createNewProduct(
+    productData: Omit<Product, 'id' | 'createdAt' | 'updatedAt'>,
+  ): Promise<Product> {
+    return this.prismaService.product.create({
+      data: productData,
+    });
+  }
+  updateProductById(
+    id: Product['id'],
+    bookData: Omit<Product, 'id' | 'createdAt' | 'updatedAt'>,
+  ): Promise<Product> {
+    return this.prismaService.product.update({
+      where: { id },
+      data: bookData,
+    });
+  }
 }

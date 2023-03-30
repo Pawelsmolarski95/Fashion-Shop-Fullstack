@@ -15,6 +15,12 @@ enum Role {
   ADMIN
 }
 
+enum Category {
+  SHOES
+  CLOTHES
+  ACCESORIES
+}
+
 model User {
   id       String    @id @default(uuid())
   email    String    @unique
@@ -43,14 +49,15 @@ model Order {
 }
 
 model Product {
-  id          String   @id @default(uuid())
+  id          String    @id @default(uuid())
   name        String
   price       Int
   description String
-  category    String
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
   
-  orders      Order[]
+  category    Category
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  orders Order[]
 }

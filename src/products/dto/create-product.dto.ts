@@ -12,5 +12,5 @@ export class CreateProductDTO {
   @Length(10, 400)
   description: string;
   @IsString()
-  category: string;
+  category: string
 }

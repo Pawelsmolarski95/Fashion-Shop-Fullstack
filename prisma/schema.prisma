@@ -15,17 +15,13 @@ enum Role {
   ADMIN
 }
 
-enum Category {
-  SHOES
-  CLOTHES
-  ACCESORIES
-}
+
 
 model User {
   id       String    @id @default(uuid())
   email    String    @unique
   password Password?
-  orders   Order[]
+  order    Order?
   role     Role      @default(USER)
 }
 
@@ -37,27 +33,26 @@ model Password {
 }
 
 model Order {
-  id        String   @id @default(uuid())
-  userId    String?
-  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  id     String @id @default(uuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   productId String?
   product   Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
-  adress    String
+
+  adress String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Product {
-  id          String    @id @default(uuid())
+  id          String   @id @default(uuid())
   name        String
   price       Int
   description String
-  
-  category    Category
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  orders Order[]
+  category    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  orders      Order[]
 }

@@ -10,6 +10,7 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
+import { AdminAuthGuard } from 'src/auth/admin-auth.guard';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { CreateProductDTO } from './dto/create-product.dto';
 import { UpdateProductDTO } from './dto/update-product.dto';
@@ -20,6 +21,7 @@ export class ProductsController {
   constructor(private productsService: ProductsService) {}
 
   @Get('/')
+  @UseGuards(AdminAuthGuard)
   @UseGuards(JwtAuthGuard)
   getAllProducts() {
     return this.productsService.getAll();

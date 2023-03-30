@@ -4,12 +4,14 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { RegisterDTO } from './dto/register.dto';
 import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {
   constructor(
     private jwtService: JwtService,
     private usersService: UsersService,
+    private configService: ConfigService,
   ) {}
 
   public async register(registrationData: RegisterDTO) {
@@ -33,8 +35,8 @@ export class AuthService {
     const payload = { email: user.email, sub: user.id };
   
     const accessToken = this.jwtService.sign(payload, {
-      secret: 'xrwe4543534',
-      expiresIn: '12h',
+      secret: this.configService.get<string>('jwt.secret'),
+      expiresIn: '6h',
     });
   
     return {

@@ -14,6 +14,7 @@ import { AuthModule } from './auth/auth.module';
 import * as cors from 'cors';
 import { PrismaModule } from './prisma/prisma.module';
 import { PassportModule } from '@nestjs/passport';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { PassportModule } from '@nestjs/passport';
     AuthModule,
     PrismaModule,
     PassportModule,
+    ConfigModule.forRoot({ isGlobal: true })
   ],
   controllers: [AppController],
   providers: [AppService],

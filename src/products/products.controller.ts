@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  NotFoundException,
   Param,
   ParseUUIDPipe,
   Post,
@@ -24,17 +25,20 @@ export class ProductsController {
   @Get('/:id')
   async getProductById(@Param('id', new ParseUUIDPipe()) id: string) {
     const productById = await this.productsService.getById(id);
+    if (!productById) throw new NotFoundException('Product not found');
     return productById;
   }
   @Get('/category/:category')
   async getProductByCategory(@Param('category') category: string) {
     const productByCategory = await this.productsService.getByCategory(category);
+    if (!productByCategory) throw new NotFoundException('Products not found');
     return productByCategory;
   }
 
   @Delete('/:id')
   async deleteProductById(@Param('id', new ParseUUIDPipe()) id: string) {
     const productById = await this.productsService.getById(id);
+    if (!productById) throw new NotFoundException('Product not found');
     this.productsService.deleteById(id);
     return { success: true };
   }

@@ -8,7 +8,9 @@ import {
   ParseUUIDPipe,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { CreateProductDTO } from './dto/create-product.dto';
 import { UpdateProductDTO } from './dto/update-product.dto';
 import { ProductsService } from './products.service';
@@ -18,6 +20,7 @@ export class ProductsController {
   constructor(private productsService: ProductsService) {}
 
   @Get('/')
+  @UseGuards(JwtAuthGuard)
   getAllProducts() {
     return this.productsService.getAll();
   }

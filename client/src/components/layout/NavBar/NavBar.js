@@ -31,7 +31,7 @@ const NavBar = () => {
       <div className="grow">
         <ul className="hidden md:flex items-center uppercase tracking-widest justify-center md:justify-end text-[#3E5151] gap-2 md:gap-8 cursor-pointer">
           <li>Home</li>
-          <ul className="relative flex justify-center items-center">
+          <ul className="relative flex justify-center items-center ">
             Categories
             <div
               className={
@@ -46,7 +46,7 @@ const NavBar = () => {
             <div
               className={
                 open
-                  ? 'absolute top-6 left-0 transition duration-500 ease-in-out'
+                  ? 'absolute top-6 left-0 transition duration-500 ease-in-out bg-[#EDE9E8] z-10 px-2 mt-3'
                   : 'hidden absolute top-6 left-0 transition duration-500 ease-in-out'
               }
             >

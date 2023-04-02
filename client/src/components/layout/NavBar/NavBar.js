@@ -21,7 +21,7 @@ const NavBar = () => {
           <input
             type="text"
             placeholder="Search product"
-            className="rounded-lg border-gray-500 border-2 py-1 px-8 placeholder-gray-500 bg-inherit outline-none"
+            className="rounded-lg border-gray-500 border-2 py-1 px-1 lg:px-8 placeholder-gray-500 bg-inherit outline-none"
           />
           <div className="absolute right-2 cursor-pointer">
             <AiOutlineSearch size={24} />
@@ -29,7 +29,7 @@ const NavBar = () => {
         </form>
       </div>
       <div className="grow">
-        <ul className="hidden md:flex items-center uppercase tracking-widest justify-center md:justify-end text-[#3E5151] gap-2 md:gap-8 cursor-pointer">
+        <ul className="hidden md:flex items-center uppercase tracking-widest justify-center md:justify-end text-[#3E5151] gap-2 lg:gap-8 cursor-pointer">
           <li>Home</li>
           <ul className="relative flex justify-center items-center ">
             Categories

@@ -10,7 +10,7 @@ const SortTools = () => {
           <select
          
             id="price"
-            class="bg-gray-50 border  tracking-widest border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="bg-gray-50 border  tracking-widest border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
             <option selected="Price">Price</option>
             <option value={100}>0-100</option>
@@ -26,7 +26,7 @@ const SortTools = () => {
           ></label>
           <select
             id="color"
-            class="bg-gray-50 border tracking-widest border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="bg-gray-50 border tracking-widest border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
             <option selected="Color">Color</option>
             <option value='yellow'>Yellow</option>
@@ -44,7 +44,7 @@ const SortTools = () => {
           ></label>
           <select
             id="review"
-            class="bg-gray-50 border tracking-widest border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="bg-gray-50 border tracking-widest border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
             <option selected="Price">Review</option>
             <option value={2.5}>1.0-2.5 </option>
@@ -61,7 +61,7 @@ const SortTools = () => {
           ></label>
           <select
             id="material"
-            class="bg-gray-50 border tracking-widest border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="bg-gray-50 border tracking-widest border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
             <option selected="Material">Material</option>
             <option value='steal'>Steel </option>
@@ -79,7 +79,7 @@ const SortTools = () => {
           ></label>
           <select
             id="sortby"
-            class=" border-2 tracking-widest border-gray-500 text-[#EDE9E8] bg-gray-500 text-sm rounded-lg block w-full p-2.5"
+            class=" border-2 tracking-widest border-gray-500 text-[#EDE9E8] bg-gray-500 text-sm rounded-full block w-full p-2.5"
           >
             <option selected="SortBy">Sort By</option>
             <option value='steal'>Lowest </option>

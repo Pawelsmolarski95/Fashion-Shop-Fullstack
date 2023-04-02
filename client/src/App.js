@@ -4,6 +4,7 @@ import SortTools from './components/features/SortTools/SortTools';
 
 
 import NavBar from './components/layout/NavBar/NavBar';
+import Products from './components/pages/Products/Products';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <NavBar />
       <Banner />
       <SortTools />
+      <Products/>
       
     </>
   );

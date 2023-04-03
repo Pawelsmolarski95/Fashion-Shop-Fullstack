@@ -21,7 +21,7 @@ const NavBar = () => {
           <input
             type="text"
             placeholder="Search product"
-            className="rounded-lg border-gray-500 border-2 py-1 px-1 lg:px-8 placeholder-gray-500 bg-inherit outline-none"
+            className="rounded-full border-gray-500 border-2 py-1 px-1 lg:px-8 placeholder-gray-500 bg-inherit outline-none"
           />
           <div className="absolute right-2 cursor-pointer">
             <AiOutlineSearch size={24} />

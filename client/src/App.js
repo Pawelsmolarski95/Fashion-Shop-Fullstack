@@ -1,20 +1,20 @@
+import { Route, Routes } from 'react-router';
 import './App.css';
-import Banner from './components/features/Banner/Banner';
-import SortTools from './components/features/SortTools/SortTools';
 
 
 import NavBar from './components/layout/NavBar/NavBar';
-import Products from './components/pages/Products/Products';
+import Home from './components/pages/Home/Home';
+import SingleProduct from './components/pages/SingleProduct/SingleProduct';
 
 function App() {
   return (
-    <>
+    <main>
       <NavBar />
-      <Banner />
-      <SortTools />
-      <Products/>
-      
-    </>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/product/:id" element={<SingleProduct/>} />
+      </Routes>
+    </main>
   );
 }
 

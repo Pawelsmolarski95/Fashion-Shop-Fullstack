@@ -1,10 +1,7 @@
-// import Rating from '@mui/material/Rating';
-// import phone from './phone1.jpeg';
-import { useState } from 'react';
-// import { Link } from 'react-router-dom';
+
 
 const ProductBox = () => {
-  const [value, setValue] = useState(3);
+
   return (
     <a href="/product/:id" className="group">
       <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">

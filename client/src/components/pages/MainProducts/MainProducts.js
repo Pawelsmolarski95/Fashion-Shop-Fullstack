@@ -8,7 +8,8 @@ import {
   PlusIcon,
   Squares2X2Icon,
 } from '@heroicons/react/20/solid';
-import ProductBox from '../../common/ProductBox/ProductBox';
+
+import Products from '../Products/Products';
 
 const sortOptions = [
   { name: 'Most Popular', href: '#', current: true },
@@ -248,13 +249,7 @@ const MainProducts = () => {
                 </Transition>
               </Menu>
 
-              <button
-                type="button"
-                className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
-              >
-                <span className="sr-only">View grid</span>
-                <Squares2X2Icon className="h-5 w-5" aria-hidden="true" />
-              </button>
+        
               <button
                 type="button"
                 className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
@@ -347,16 +342,7 @@ const MainProducts = () => {
 
               {/* Product grid */}
               <div className="lg:col-span-3">
-
-                <ProductBox />
-                <ProductBox />
-                <ProductBox />
-                <ProductBox />
-                <ProductBox />
-                <ProductBox />
-                <ProductBox />
-                <ProductBox />
-                <ProductBox />
+                              <Products />
               </div>
             </div>
           </section>

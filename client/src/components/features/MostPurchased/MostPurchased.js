@@ -7,10 +7,10 @@ const MostPurchased = () => {
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <div className="flex justify-between items-center ">
           <h2 className="text-2xl mb-4 font-bold text-gray-900">
-            All Products
+            Most Purchased 
           </h2>
           <div className="flex justify-center items-center gap-1">
-            <p className="text-[#4f46e5]">See all products</p>
+            <a href='/products'> <p className="text-[#4f46e5]">See all products</p></a> 
             <AiOutlineArrowRight style={{ color: '#4f46e5' }} />
           </div>
         </div>

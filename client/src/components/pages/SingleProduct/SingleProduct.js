@@ -1,11 +1,7 @@
-import { Breadcrumbs, Rating, Typography } from '@mui/material';
-import phone from './phone1.jpeg';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+
 
 const SingleProduct = () => {
-  const [value, setValue] = useState(4);
-  const [chooseColor, setChooseColor] = useState();
+
   return (
     <div className="bg-white">
       <div className="pt-6">
@@ -16,7 +12,7 @@ const SingleProduct = () => {
           >
             <li>
               <div className="flex items-center">
-                <a href="#" className="mr-2 text-sm font-medium text-gray-900">
+                <a href="/" className="mr-2 text-sm font-medium text-gray-900">
                   Men
                 </a>
                 <svg

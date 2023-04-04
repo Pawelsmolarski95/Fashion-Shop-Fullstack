@@ -1,51 +1,22 @@
-import Rating from '@mui/material/Rating';
-import phone from './phone1.jpeg';
+// import Rating from '@mui/material/Rating';
+// import phone from './phone1.jpeg';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const ProductBox = () => {
   const [value, setValue] = useState(3);
   return (
-    <div className="max-w-[250px] h-auto">
-      <img
-        src={phone}
-        style={{ width: 250, height: 250 }}
-        alt="phone"
-        className="object-fit rounded-lg"
-      />
-      <div className="flex justify-between">
-        <h2 className="text-lg font-bold tracking-widest">Iphone 12 Pro </h2>
-        <h2>100$</h2>
-      </div>
-      <div className="my-4 ">
-        <p className="text-sm">
-          Attach one to your keys. Put another in your backpack. If they’re
-          misplaced, just use the Find My app.
-        </p>
-      </div>
-      <div className="flex my-3">
-        <Rating
-          name="simple-controlled"
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
+    <a href="/product/:id" class="group">
+      <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+        <img
+          src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
+          alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+          class="h-full w-full object-cover object-center group-hover:opacity-75"
         />
       </div>
-      <div className="flex justify-between">
-        <Link to="/product/:id">
-          <button
-           className=" border-gray-500 border-2 text-[12px]  cursor-pointer uppercase rounded-full w-[100px] h-[35px] tracking-wide text-gray-500 "
-          >
-            See more
-          </button>
-        </Link>
-
-        <button className="bg-[#5271FF] text-[12px] border-none cursor-pointer uppercase rounded-full w-[100px] h-[35px] tracking-wide text-[#EDE9E8]">
-          Add to Cart
-        </button>
-      </div>
-    </div>
+      <h3 class="mt-4 text-sm text-gray-700">Earthen Bottle</h3>
+      <p class="mt-1 text-lg font-medium text-gray-900">$48</p>
+    </a>
   );
 };
 

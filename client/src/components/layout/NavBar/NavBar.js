@@ -14,7 +14,8 @@ const NavBar = () => {
   };
 
   return (
-    <Popover className="mx-aut w-full flex items-center  px-6 py-2 h-24">
+    <div className="bg-[#f3f4f6]">
+      <Popover className="mx-auto w-full flex items-center  px-6 py-2 h-24">
       <img src={logo} alt="logo" width={130} height={130} />
       <div className="grow">
         <form className="hidden md:flex justify-end items-center relative">
@@ -46,7 +47,7 @@ const NavBar = () => {
             <div
               className={
                 open
-                  ? 'absolute top-6 left-0 transition duration-500 ease-in-out bg-[#EDE9E8] z-10 px-2 mt-3'
+                  ? 'absolute top-6 left-0 transition duration-500 ease-in-out bg-[#f3f4f6] z-10 px-2 mt-3'
                   : 'hidden absolute top-6 left-0 transition duration-500 ease-in-out'
               }
             >
@@ -150,6 +151,8 @@ const NavBar = () => {
         </div>
       </Popover.Panel>
     </Popover>
+    </div>
+    
   );
 };
 

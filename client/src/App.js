@@ -9,6 +9,7 @@ import MainProducts from './components/pages/MainProducts/MainProducts';
 import Login from './components/pages/Login/Login';
 import Register from './components/pages/Register/Register';
 import ShoppingCart from './components/pages/ShoppingCart/ShoppingCart';
+import Checkout from './components/pages/Checkout/Checkout';
 
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/shoppingcart" element={<ShoppingCart />} />
-      </Routes>
+        <Route path="/checkout" element={<Checkout />} />
+        </Routes>
       <Footer />
     </main>
   );

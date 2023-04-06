@@ -17,6 +17,9 @@ export class ProductsService {
   getById(id: Product['id']): Promise<Product | null> {
     return this.prismaService.product.findUnique({
       where: { id },
+      include: {
+        image: true,
+      },
     });
   }
 

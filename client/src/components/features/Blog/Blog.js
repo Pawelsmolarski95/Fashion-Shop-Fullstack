@@ -8,8 +8,9 @@ const Blog = () => {
               This Week Blogs
             </h1>
             <p className="text-base leading-normal text-center text-gray-600 mt-4 lg:w-1/2 md:w-10/12 w-11/12">
-              If you're looking for random paragraphs, you've come to the right
-              place. When a random word or a random sentence isn't quite enough
+              If you're looking for a place where you can find all the
+              information and news about fashion and new trends in one place,
+              you've come to the perfect place.
             </p>
           </div>
           <div className="lg:flex items-stretch md:mt-12 mt-8">
@@ -18,14 +19,14 @@ const Blog = () => {
                 <div className="sm:w-1/2 relative">
                   <div>
                     <p className="p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">
-                      12 April 2021
+                      12 April 2022
                     </p>
                     <div className="absolute bottom-0 left-0 p-6">
                       <h2 className="text-xl font-semibold 5 text-white">
-                        The Decorated Ways
+                        Perfect style for a small party
                       </h2>
                       <p className="text-base leading-4 text-white mt-2">
-                        Dive into minimalism
+                        Suggestions for her and him
                       </p>
                       <div className="flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
                         <p className="pr-2 text-sm font-medium leading-none">
@@ -59,14 +60,14 @@ const Blog = () => {
                 <div className="sm:w-1/2 sm:mt-0 mt-4 relative">
                   <div>
                     <p className="p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">
-                      12 April 2021
+                      12 June 2022
                     </p>
                     <div className="absolute bottom-0 left-0 p-6">
                       <h2 className="text-xl font-semibold 5 text-white">
-                        The Decorated Ways
+                        The winter - what to wear?
                       </h2>
                       <p className="text-base leading-4 text-white mt-2">
-                        Dive into minimalism
+                        Three sample sets for her
                       </p>
                       <div className="flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
                         <p className="pr-2 text-sm font-medium leading-none">
@@ -101,14 +102,14 @@ const Blog = () => {
               <div className="relative">
                 <div>
                   <p className="md:p-10 p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">
-                    12 April 2021
+                    14 July 2022
                   </p>
                   <div className="absolute bottom-0 left-0 md:p-10 p-6">
                     <h2 className="text-xl font-semibold 5 text-white">
-                      The Decorated Ways
+                      The Art of Accessorizing
                     </h2>
                     <p className="text-base leading-4 text-white mt-2">
-                      Dive into minimalism
+                      Elevate Your Outfit with These Fashionable Tips
                     </p>
                     <div className="flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
                       <p className="pr-2 text-sm font-medium leading-none">
@@ -153,10 +154,10 @@ const Blog = () => {
                   </p>
                   <div className="absolute bottom-0 left-0 md:p-10 p-6">
                     <h2 className="text-xl font-semibold 5 text-white">
-                      The Decorated Ways
+                      From Day to Night
                     </h2>
                     <p className="text-base leading-4 text-white mt-2">
-                      Dive into minimalism
+                      Versatile Outfit Ideas to Take You Anywhere in Style
                     </p>
                     <div className="flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
                       <p className="pr-2 text-sm font-medium leading-none">
@@ -196,14 +197,15 @@ const Blog = () => {
                 <div className="relative w-full">
                   <div>
                     <p className="p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">
-                      12 April 2021
+                      15 September 2022
                     </p>
                     <div className="absolute bottom-0 left-0 p-6">
                       <h2 className="text-xl font-semibold 5 text-white">
-                        The Decorated Ways
+                        Fashion on a Budget
                       </h2>
                       <p className="text-base leading-4 text-white mt-2">
-                        Dive into minimalism
+                        Tips and Tricks for Creating a Chic Wardrobe without
+                        Breaking the Bank
                       </p>
                       <div className="flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
                         <p className="pr-2 text-sm font-medium leading-none">
@@ -237,14 +239,15 @@ const Blog = () => {
                 <div className="relative w-full sm:mt-0 mt-4">
                   <div>
                     <p className="p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">
-                      12 April 2021
+                      22 January 2023
                     </p>
                     <div className="absolute bottom-0 left-0 p-6">
                       <h2 className="text-xl font-semibold 5 text-white">
-                        The Decorated Ways
+                        Finding Your Signature Style
                       </h2>
                       <p className="text-base leading-4 text-white mt-2">
-                        Dive into minimalism
+                        How to Create a Fashionable and Unique Look That Defines
+                        You
                       </p>
                       <div className="flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
                         <p className="pr-2 text-sm font-medium leading-none">

@@ -19,11 +19,10 @@ const sortOptions = [
   { name: 'Price: High to Low', href: '#', current: false },
 ];
 const subCategories = [
-  { name: 'Totes', href: '#' },
-  { name: 'Backpacks', href: '#' },
-  { name: 'Travel Bags', href: '#' },
-  { name: 'Hip Bags', href: '#' },
-  { name: 'Laptop Sleeves', href: '#' },
+  { name: 'Men', href: '#' },
+  { name: 'Women', href: '#' },
+  { name: 'Accesories', href: '#' },
+
 ];
 const filters = [
   {
@@ -39,26 +38,26 @@ const filters = [
     ],
   },
   {
-    id: 'category',
-    name: 'Category',
+    id: 'material',
+    name: 'Material',
     options: [
-      { value: 'new-arrivals', label: 'New Arrivals', checked: false },
-      { value: 'sale', label: 'Sale', checked: false },
-      { value: 'travel', label: 'Travel', checked: true },
-      { value: 'organization', label: 'Organization', checked: false },
-      { value: 'accessories', label: 'Accessories', checked: false },
+      { value: 'cotton', label: 'Cotton', checked: false },
+      { value: 'polyester', label: 'Polyester', checked: false },
+      { value: 'wool', label: 'Wool', checked: true },
+      { value: 'denim', label: 'Denim', checked: false },
+      { value: 'leather', label: 'Leather', checked: false },
     ],
   },
   {
     id: 'size',
     name: 'Size',
     options: [
-      { value: '2l', label: '2L', checked: false },
-      { value: '6l', label: '6L', checked: false },
-      { value: '12l', label: '12L', checked: false },
-      { value: '18l', label: '18L', checked: false },
-      { value: '20l', label: '20L', checked: false },
-      { value: '40l', label: '40L', checked: true },
+      { value: 'XS', label: 'XS', checked: false },
+      { value: 'S', label: 'S', checked: false },
+      { value: 'M', label: 'M', checked: false },
+      { value: 'L', label: 'L', checked: false },
+      { value: 'XL', label: 'XL', checked: false },
+      { value: 'XXL', label: 'XXL', checked: true },
     ],
   },
 ];
@@ -200,7 +199,7 @@ const MainProducts = () => {
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              New Arrivals
+              Products
             </h1>
 
             <div className="flex items-center">

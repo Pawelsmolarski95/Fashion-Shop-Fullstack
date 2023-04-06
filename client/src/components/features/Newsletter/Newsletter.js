@@ -8,8 +8,8 @@ const Newsletter = () => {
               Subscribe to our newsletter.
             </h2>
             <p className="mt-4 text-lg leading-8 text-gray-900">
-              Nostrud amet eu ullamco nisi aute in ad minim nostrud adipisicing
-              velit quis. Duis tempor incididunt dolore.
+               Sign up and we’ll keep you updated with the latest
+              collections, exclusive offers and promotions. 
             </p>
             <div className="mt-6 flex max-w-md gap-x-4">
               <label htmlFor="email-address" className="sr-only">
@@ -37,20 +37,20 @@ const Newsletter = () => {
               <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
                 {/* <CalendarDaysIcon className="h-6 w-6 text-white" aria-hidden="true" /> */}
               </div>
-              <dt className="mt-4 font-semibold text-gray-900">Weekly articles</dt>
+              <dt className="mt-4 font-semibold text-gray-900">
+                Weekly articles
+              </dt>
               <dd className="mt-2 leading-7 text-gray-600">
-                Non laboris consequat cupidatat laborum magna. Eiusmod non irure
-                cupidatat duis commodo amet.
+              Stay up to date and don't miss our weekly articles about the world of fashion.
               </dd>
             </div>
             <div className="flex flex-col items-start">
               <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
                 {/* <HandRaisedIcon className="h-6 w-6 text-white" aria-hidden="true" /> */}
               </div>
-              <dt className="mt-4 font-semibold text-gray-900">No spam</dt>
+              <dt className="mt-4 font-semibold text-gray-900">Proven news</dt>
               <dd className="mt-2 leading-7 text-gray-600">
-                Officia excepteur ullamco ut sint duis proident non adipisicing.
-                Voluptate incididunt anim.
+              With our newsletter, he will know everything that is happening in the latest fashion trends.
               </dd>
             </div>
           </dl>
@@ -59,9 +59,7 @@ const Newsletter = () => {
       <div
         className="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6"
         aria-hidden="true"
-      >
-        
-      </div>
+      ></div>
     </div>
   );
 };

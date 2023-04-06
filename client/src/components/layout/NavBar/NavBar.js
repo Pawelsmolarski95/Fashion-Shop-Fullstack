@@ -24,10 +24,10 @@ const NavBar = () => {
           <input
             type="text"
             placeholder="Search product"
-            className="rounded-full font-serif border-gray-500 border-2 py-1 px-1 lg:px-8 placeholder-gray-500 bg-inherit outline-none"
+            className="rounded-full font-serif border-gray-500 border-2 text-[14px] text-gray-400 px-1 lg:px-8 placeholder-gray-400 bg-inherit outline-none"
           />
           <div className="absolute right-2 cursor-pointer">
-            <AiOutlineSearch size={24} />
+            <AiOutlineSearch size={22} />
           </div>
         </form>
       </div>

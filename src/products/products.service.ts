@@ -24,7 +24,12 @@ export class ProductsService {
   }
 
   getByCategory(category: Product['category']): Promise<Product[] | null> {
-    return this.prismaService.product.findMany({ where: { category } });
+    return this.prismaService.product.findMany({
+      where: { category },
+      include: {
+        image: true,
+      },
+    });
   }
 
   deleteById(id: Product['id']): Promise<Product | null> {

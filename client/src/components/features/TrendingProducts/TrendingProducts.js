@@ -1,7 +1,7 @@
 import ProductBox from '../../common/ProductBox/ProductBox';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 
-const TrendingProducts = () => {
+const TrendingProducts = ({products}) => {
   return (
     <>
       <div className="bg-white">
@@ -21,10 +21,13 @@ const TrendingProducts = () => {
           </div>
 
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-            <ProductBox />
-            <ProductBox />
-            <ProductBox />
-            <ProductBox />
+          {products.slice(0, 4).map((product) => (
+            <ProductBox
+              id={product.id}
+              name={product.name}
+              price={product.price}
+            />
+          ))}
           </div>
         </div>
       </div>

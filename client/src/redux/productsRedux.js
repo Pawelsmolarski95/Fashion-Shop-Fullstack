@@ -28,13 +28,64 @@ export const loadProducts = (payload) => ({ payload, type: LOAD_PRODUCTS });
 
 export const loadProductsRequest = () => {
   return async (dispatch) => {
-    dispatch(startRequest({ name: 'LOAD_PRODUCTS' }));
-    try {
-      let res = await axios.get(`${API_URL}/products`);
-      dispatch(loadProducts(res.data));
-      dispatch(endRequest({ name: 'LOAD_PRODUCTS' }));
-    } catch (err) {
-      dispatch(errorRequest({ name: 'LOAD_PRODUCTS', error: err.message }));
-    }
-  };
+    fetch('http://localhost:3000/api/products')
+    .then(res=> res.json())
+    .then(products => dispatch(loadProducts(products)))
 };
+}
+
+// export const loadSearchedProductsRequest = () => {
+//   return async (dispatch) => {
+//     dispatch(startRequest({ name: 'LOAD_PRODUCTS' }));
+//     try {
+//       const res = await axios.get(`${API_URL}/products`, {
+//         params: {
+//           name: `${searchPhrase}`,
+//           nameFilterType: 'CONTAINS',
+//           sortField: 'name',
+//           orderDirection: 'DESC',
+//         },
+//       });
+//       dispatch(loadProducts(res.data));
+//       dispatch(endRequest({ name: 'LOAD_PRODUCTS' }));
+//     } catch (err) {
+//       dispatch(errorRequest({ name: 'LOAD_PRODUCTS', error: err.message }));
+//     }
+//   };
+// };
+
+// export const loadCategoryProductsRequest = (category) => {
+//   return async (dispatch) => {
+//     dispatch(startRequest({ name: 'LOAD_PRODUCTS' }));
+//     try {
+//       const res = await axios.get(`${API_URL}/products`, {
+//         params: {
+//           category: `${category}`,
+//         },
+//       });
+//       dispatch(loadProducts(res.data));
+//       dispatch(endRequest({ name: 'LOAD_PRODUCTS' }));
+//     } catch (err) {
+//       dispatch(errorRequest({ name: 'LOAD_PRODUCTS', error: err.message }));
+//     }
+//   };
+// };
+
+// initial state
+const initialState = {
+  data: [],
+
+};
+
+// action creators
+const productsReducer = (statePart = initialState, action ) => {
+  switch (action.type) {
+    case LOAD_PRODUCTS:
+      return { ...statePart, data: [...action.payload] };
+    
+    default:
+      return statePart;
+  }
+};
+
+export default productsReducer;

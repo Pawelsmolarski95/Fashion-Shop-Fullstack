@@ -22,7 +22,6 @@ const subCategories = [
   { name: 'Men', href: '#' },
   { name: 'Women', href: '#' },
   { name: 'Accesories', href: '#' },
-
 ];
 const filters = [
   {
@@ -248,7 +247,6 @@ const MainProducts = () => {
                 </Transition>
               </Menu>
 
-        
               <button
                 type="button"
                 className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
@@ -341,7 +339,7 @@ const MainProducts = () => {
 
               {/* Product grid */}
               <div className="lg:col-span-3">
-                              <Products />
+                <Products />
               </div>
             </div>
           </section>
@@ -349,6 +347,6 @@ const MainProducts = () => {
       </div>
     </div>
   );
-}
+};
 
-export default MainProducts
+export default MainProducts;

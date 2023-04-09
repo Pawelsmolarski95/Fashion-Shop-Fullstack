@@ -17,9 +17,9 @@ const sortOptions = [
   { name: 'Price: High to Low', href: '#', current: false },
 ];
 const subCategories = [
-  { name: 'Men', href: '#' },
-  { name: 'Women', href: '#' },
-  { name: 'Accesories', href: '#' },
+  { name: 'Men', href: '/product/category/men' },
+  { name: 'Women', href: '/product/category/women' },
+  { name: 'Accesories', href: '/product/category/accessories' },
 ];
 const filters = [
   {

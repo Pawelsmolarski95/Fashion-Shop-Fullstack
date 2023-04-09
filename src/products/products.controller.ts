@@ -38,6 +38,13 @@ export class ProductsController {
     return productByCategory;
   }
 
+  @Get('/searchphrase/:searchphrase')
+  async getProductBySearchPhrase(@Param('searchphrase') searchphrase: string) {
+    const productBySearchPhrase = await this.productsService.getBySearchPhrase(searchphrase);
+    if (!productBySearchPhrase) throw new NotFoundException('Products not found');
+    return productBySearchPhrase;
+  }
+
   @Delete('/:id')
   async deleteProductById(@Param('id', new ParseUUIDPipe()) id: string) {
     const productById = await this.productsService.getById(id);

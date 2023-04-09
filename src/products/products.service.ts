@@ -32,6 +32,16 @@ export class ProductsService {
     });
   }
 
+  getBySearchPhrase(searchphrase: string): Promise<Product[] | null> {
+    return this.prismaService.product.findMany({
+      where: {
+        name: {
+          contains: 'searchphrase',
+        },
+      },
+    });
+  }
+
   deleteById(id: Product['id']): Promise<Product | null> {
     return this.prismaService.product.delete({
       where: { id },

@@ -35,14 +35,14 @@ const NavBar = () => {
       </div>
       <div className="grow">
         <ul className="hidden md:flex font-serif items-center font-medium tracking-widest justify-center md:justify-end text-gray-600 gap-2 lg:gap-8 cursor-pointer">
-          <Link to={'/products/category/men'}>
+          <Link to={'/product/category/men'}>
             <li>Men</li>
           </Link>
-          <Link to={'/products/category/women'}>
+          <Link to={'/product/category/women'}>
             <li>Women</li>
           </Link>
 
-          <Link to={'/products/category/accesories'}>
+          <Link to={'/product/category/accessories'}>
             <li>Accesories</li>
           </Link>
           <li>Contact</li>

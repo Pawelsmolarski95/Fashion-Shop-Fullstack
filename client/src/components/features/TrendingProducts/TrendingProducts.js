@@ -1,7 +1,25 @@
+import { useDispatch, useSelector } from 'react-redux';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import { AiOutlineArrowRight } from 'react-icons/ai';
+import { fetchProducts } from '../../../redux/productReducer';
+import { useEffect } from 'react';
 
-const TrendingProducts = ({products}) => {
+const TrendingProducts = () => {
+
+  const dispatch = useDispatch();
+  const { products, isLoading, error } = useSelector((state) => state.products);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
   return (
     <>
       <div className="bg-white">

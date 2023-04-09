@@ -1,6 +1,30 @@
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProductById } from "../../../redux/productReducer";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 
 const SingleProduct = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { selectedProduct, isLoading, error } = useSelector((state) => state.products);
+
+  useEffect(() => {
+    dispatch(fetchProductById(id));
+  }, [dispatch, id]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!selectedProduct) {
+    return <div>No product selected</div>;
+  }
+
 
   return (
     <div className="bg-white">
@@ -52,7 +76,7 @@ const SingleProduct = () => {
                 aria-current="page"
                 className="font-medium text-gray-500 hover:text-gray-600"
               >
-                Basic Tee 6-Pack
+                {selectedProduct.name}
               </a>
             </li>
           </ol>
@@ -100,7 +124,7 @@ const SingleProduct = () => {
 
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
-            <p className="text-3xl tracking-tight text-gray-900">$192</p>
+            <p className="text-3xl tracking-tight text-gray-900">${selectedProduct.price}</p>
 
             <div className="mt-6">
               <h3 className="sr-only">Reviews</h3>

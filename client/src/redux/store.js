@@ -1,21 +1,12 @@
-import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
-import productsReducer from './productsRedux';
-import thunk from 'redux-thunk';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import productReducer from './productReducer';
 
-const subreducers = {
-  products: productsReducer,
-};
+const rootReducer = combineReducers({
+  products: productReducer,
+});
 
-const reducer = combineReducers(subreducers);
-
-const store = createStore(
-  reducer,
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__
-      ? window.__REDUX_DEVTOOLS_EXTENSION__()
-      : (f) => f,
-  ),
-);
+const store = configureStore({
+  reducer: rootReducer,
+});
 
 export default store;

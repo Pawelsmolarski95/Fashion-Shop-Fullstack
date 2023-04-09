@@ -7,6 +7,8 @@ import { Popover } from '@headlessui/react';
 import logo from './logo.png';
 import { ShoppingBagIcon, User, UserIcon } from '@heroicons/react/24/outline';
 import ShoppingCart from '../../pages/ShoppingCart/ShoppingCart';
+import { Link } from 'react-router-dom';
+
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
@@ -33,14 +35,16 @@ const NavBar = () => {
       </div>
       <div className="grow">
         <ul className="hidden md:flex font-serif items-center font-medium tracking-widest justify-center md:justify-end text-gray-600 gap-2 lg:gap-8 cursor-pointer">
-          <a href="/products">
+          <Link to={'/products/category/men'}>
             <li>Men</li>
-          </a>
-          <a href="/products">
+          </Link>
+          <Link to={'/products/category/women'}>
             <li>Women</li>
-          </a>
+          </Link>
 
-          <li>Accesories</li>
+          <Link to={'/products/category/accesories'}>
+            <li>Accesories</li>
+          </Link>
           <li>Contact</li>
         </ul>
       </div>

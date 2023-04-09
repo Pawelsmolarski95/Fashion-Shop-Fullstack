@@ -5,11 +5,12 @@ import NavBar from './components/layout/NavBar/NavBar';
 import Home from './components/pages/Home/Home';
 import SingleProduct from './components/pages/SingleProduct/SingleProduct';
 import Footer from './components/layout/Footer/Footer';
-import MainProducts from './components/pages/MainProducts/MainProducts';
 import Login from './components/pages/Login/Login';
 import Register from './components/pages/Register/Register';
 import ShoppingCart from './components/pages/ShoppingCart/ShoppingCart';
 import Checkout from './components/pages/Checkout/Checkout';
+import AllProducts from './components/pages/AllProducts/AllProducts';
+import Category from './components/pages/Category/Category';
 
 
 function App() {
@@ -18,8 +19,9 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<MainProducts />} />
+        <Route path="/products" element={<AllProducts/>} />
         <Route path="/product/:id" element={<SingleProduct />} />
+        <Route path="/product/category/:category" element={<Category />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/shoppingcart" element={<ShoppingCart />} />

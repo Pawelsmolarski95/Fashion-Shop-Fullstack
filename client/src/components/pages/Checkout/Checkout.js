@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { items, totalAmount } from '../../../redux/cartSlice';
 
 const Checkout = () => {
   const countries = ['China', 'Russia', 'UK'];
@@ -59,19 +60,57 @@ const Checkout = () => {
           <div className="flex flex-col xl:flex-row justify-center xl:justify-between space-y-6 xl:space-y-0 xl:space-x-6 w-full">
             <div className="xl:w-3/5 flex flex-col sm:flex-row xl:flex-col justify-center items-center bg-gray-100 py-7 sm:py-0 xl:py-10 px-10 ">
               <div className="flex flex-col justify-start items-start w-full space-y-4">
-                <p className="text-xl md:text-2xl leading-normal text-gray-800">
-                  Logitech K251
-                </p>
-                <p className="text-base font-semibold leading-none text-gray-600">
-                  $520.00
-                </p>
+                
               </div>
-              <div className="mt-6 sm:mt-0 xl:my-10 xl:px-20 w-52 sm:w-96 xl:w-auto">
-                <img
-                  src="https://i.ibb.co/0GFzTP4/Rectangle-131.png"
-                  alt="headphones"
-                />
-              </div>
+              <div className="mt-8">
+                <div>
+                        <div className="flow-root">
+                          <ul
+                            role="list"
+                            className="-my-6 divide-y divide-gray-200"
+                          >
+                            {items.map((product) => (
+                              <li key={product.id} className="flex py-6">
+                                <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                  <img
+                                    src={product.image[0].fileName}
+                                    alt={product.image}
+                                    className="h-full w-full object-cover object-center"
+                                  />
+                                </div>
+
+                                <div className="ml-4 flex flex-1 flex-col">
+                                  <div>
+                                    <div className="flex justify-between text-base font-medium text-gray-900">
+                                      <h3>
+                                        <a href={product.href}>
+                                          {product.name}
+                                        </a>
+                                      </h3>
+                                      <p className="ml-4">{product.price}</p>
+                                    </div>
+                                    <p className="mt-1 text-sm text-gray-500">
+                                      {product.color}
+                                    </p>
+                                    <div className="flex flex-1 items-end justify-between text-sm">
+                                     
+                                     <p>x {product.quantity}</p>
+
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="flex justify-between text-base font-medium text-gray-900">
+                        <p>Subtotal</p>
+                        <p>${totalAmount}</p>
+                      </div>
+                      </div>
+                    </div>
+
             </div>
 
             <div className="p-8 bg-gray-100 flex flex-col lg:w-full xl:w-3/5">

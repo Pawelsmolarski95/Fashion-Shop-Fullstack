@@ -11,13 +11,27 @@ const SingleProduct = () => {
   const { selectedProduct, isLoading, error } = useSelector(
     (state) => state.products,
   );
-
   useEffect(() => {
     dispatch(fetchProductById(id));
   }, [dispatch, id]);
 
+  const [color, setColor] = useState('');
+  const [size, setSize] = useState('');
+  const [quantity, setQuantity] = useState(1);
+
+
+  const addToCartProduct = {
+    ...selectedProduct,
+    size,
+    color,
+    quantity,
+  };
+
+
+
   const addItemsToCart = () => {
-    dispatch(addItem(selectedProduct));
+    
+    dispatch(addItem(addToCartProduct));
   };
 
   if (isLoading) {
@@ -31,7 +45,7 @@ const SingleProduct = () => {
   if (!selectedProduct) {
     return <div>No product selected</div>;
   }
-  console.log(selectedProduct);
+
   return (
     <div className="bg-white">
       <div className="pt-6">
@@ -225,6 +239,7 @@ const SingleProduct = () => {
                         type="radio"
                         name="color-choice"
                         value="White"
+                        onClick={(e) => setColor(e.target.value)}
                         className="sr-only"
                         aria-labelledby="color-choice-0-label"
                       />
@@ -244,6 +259,7 @@ const SingleProduct = () => {
                         name="color-choice"
                         value="Gray"
                         className="sr-only"
+                        onClick={(e) => setColor(e.target.value)}
                         aria-labelledby="color-choice-1-label"
                       />
                       <span id="color-choice-1-label" className="sr-only">
@@ -262,6 +278,7 @@ const SingleProduct = () => {
                         name="color-choice"
                         value="Black"
                         className="sr-only"
+                        onClick={(e) => setColor(e.target.value)}
                         aria-labelledby="color-choice-2-label"
                       />
                       <span id="color-choice-2-label" className="sr-only">
@@ -291,17 +308,43 @@ const SingleProduct = () => {
                 <fieldset className="mt-4">
                   <legend className="sr-only">Choose a size</legend>
                   <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                    <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-not-allowed bg-gray-50 text-gray-200">
+                    <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
                       <input
                         type="radio"
                         name="size-choice"
                         value="XXS"
-                        disabled
+                        disabled={selectedProduct.size !== 'XXS'}
+                        onClick={(e) => setSize(e.target.value)}
                         className="sr-only"
                         aria-labelledby="size-choice-0-label"
                       />
                       <span id="size-choice-0-label">XXS</span>
-
+                      {selectedProduct.size !== 'XXS' ? (
+                        <span
+                          aria-hidden="true"
+                          className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
+                        >
+                          <svg
+                            className="absolute inset-0 h-full w-full stroke-2 text-gray-200"
+                            viewBox="0 0 100 100"
+                            preserveAspectRatio="none"
+                            stroke="currentColor"
+                          >
+                            <line
+                              x1="0"
+                              y1="100"
+                              x2="100"
+                              y2="0"
+                              vector-effect="non-scaling-stroke"
+                            />
+                          </svg>
+                        </span>
+                      ) : (
+                        <span
+                          className="pointer-events-none absolute -inset-px rounded-md"
+                          aria-hidden="true"
+                        ></span>
+                      )}
                       <span
                         aria-hidden="true"
                         className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
@@ -328,15 +371,39 @@ const SingleProduct = () => {
                         type="radio"
                         name="size-choice"
                         value="XS"
+                        disabled={selectedProduct.size !== 'XS'}
                         className="sr-only"
+                        onClick={(e) => setSize(e.target.value)}
                         aria-labelledby="size-choice-1-label"
                       />
                       <span id="size-choice-1-label">XS</span>
 
-                      <span
-                        className="pointer-events-none absolute -inset-px rounded-md"
-                        aria-hidden="true"
-                      ></span>
+                      {selectedProduct.size !== 'XS' ? (
+                        <span
+                          aria-hidden="true"
+                          className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
+                        >
+                          <svg
+                            className="absolute inset-0 h-full w-full stroke-2 text-gray-200"
+                            viewBox="0 0 100 100"
+                            preserveAspectRatio="none"
+                            stroke="currentColor"
+                          >
+                            <line
+                              x1="0"
+                              y1="100"
+                              x2="100"
+                              y2="0"
+                              vector-effect="non-scaling-stroke"
+                            />
+                          </svg>
+                        </span>
+                      ) : (
+                        <span
+                          className="pointer-events-none absolute -inset-px rounded-md"
+                          aria-hidden="true"
+                        ></span>
+                      )}
                     </label>
 
                     <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
@@ -344,15 +411,39 @@ const SingleProduct = () => {
                         type="radio"
                         name="size-choice"
                         value="S"
+                        disabled={selectedProduct.size !== 'S'}
+                        onClick={(e) => setSize(e.target.value)}
                         className="sr-only"
                         aria-labelledby="size-choice-2-label"
                       />
                       <span id="size-choice-2-label">S</span>
 
-                      <span
-                        className="pointer-events-none absolute -inset-px rounded-md"
-                        aria-hidden="true"
-                      ></span>
+                      {selectedProduct.size !== 'S' ? (
+                        <span
+                          aria-hidden="true"
+                          className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
+                        >
+                          <svg
+                            className="absolute inset-0 h-full w-full stroke-2 text-gray-200"
+                            viewBox="0 0 100 100"
+                            preserveAspectRatio="none"
+                            stroke="currentColor"
+                          >
+                            <line
+                              x1="0"
+                              y1="100"
+                              x2="100"
+                              y2="0"
+                              vector-effect="non-scaling-stroke"
+                            />
+                          </svg>
+                        </span>
+                      ) : (
+                        <span
+                          className="pointer-events-none absolute -inset-px rounded-md"
+                          aria-hidden="true"
+                        ></span>
+                      )}
                     </label>
 
                     <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
@@ -360,15 +451,39 @@ const SingleProduct = () => {
                         type="radio"
                         name="size-choice"
                         value="M"
+                        disabled={selectedProduct.size !== 'M'}
+                        onClick={(e) => setSize(e.target.value)}
                         className="sr-only"
                         aria-labelledby="size-choice-3-label"
                       />
                       <span id="size-choice-3-label">M</span>
 
-                      <span
-                        className="pointer-events-none absolute -inset-px rounded-md"
-                        aria-hidden="true"
-                      ></span>
+                      {selectedProduct.size !== 'M' ? (
+                        <span
+                          aria-hidden="true"
+                          className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
+                        >
+                          <svg
+                            className="absolute inset-0 h-full w-full stroke-2 text-gray-200"
+                            viewBox="0 0 100 100"
+                            preserveAspectRatio="none"
+                            stroke="currentColor"
+                          >
+                            <line
+                              x1="0"
+                              y1="100"
+                              x2="100"
+                              y2="0"
+                              vector-effect="non-scaling-stroke"
+                            />
+                          </svg>
+                        </span>
+                      ) : (
+                        <span
+                          className="pointer-events-none absolute -inset-px rounded-md"
+                          aria-hidden="true"
+                        ></span>
+                      )}
                     </label>
 
                     <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
@@ -376,15 +491,39 @@ const SingleProduct = () => {
                         type="radio"
                         name="size-choice"
                         value="L"
+                        disabled={selectedProduct.size !== 'L'}
+                        onClick={(e) => setSize(e.target.value)}
                         className="sr-only"
                         aria-labelledby="size-choice-4-label"
                       />
                       <span id="size-choice-4-label">L</span>
 
-                      <span
-                        className="pointer-events-none absolute -inset-px rounded-md"
-                        aria-hidden="true"
-                      ></span>
+                      {selectedProduct.size !== 'L' ? (
+                        <span
+                          aria-hidden="true"
+                          className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
+                        >
+                          <svg
+                            className="absolute inset-0 h-full w-full stroke-2 text-gray-200"
+                            viewBox="0 0 100 100"
+                            preserveAspectRatio="none"
+                            stroke="currentColor"
+                          >
+                            <line
+                              x1="0"
+                              y1="100"
+                              x2="100"
+                              y2="0"
+                              vector-effect="non-scaling-stroke"
+                            />
+                          </svg>
+                        </span>
+                      ) : (
+                        <span
+                          className="pointer-events-none absolute -inset-px rounded-md"
+                          aria-hidden="true"
+                        ></span>
+                      )}
                     </label>
 
                     <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
@@ -392,14 +531,38 @@ const SingleProduct = () => {
                         type="radio"
                         name="size-choice"
                         value="XL"
+                        disabled={selectedProduct.size !== 'XL'}
+                        onClick={(e) => setSize(e.target.value)}
                         className="sr-only"
                         aria-labelledby="size-choice-5-label"
                       />
                       <span id="size-choice-5-label">XL</span>
-                      <span
-                        className="pointer-events-none absolute -inset-px rounded-md"
-                        aria-hidden="true"
-                      ></span>
+                      {selectedProduct.size !== 'XL' ? (
+                        <span
+                          aria-hidden="true"
+                          className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
+                        >
+                          <svg
+                            className="absolute inset-0 h-full w-full stroke-2 text-gray-200"
+                            viewBox="0 0 100 100"
+                            preserveAspectRatio="none"
+                            stroke="currentColor"
+                          >
+                            <line
+                              x1="0"
+                              y1="100"
+                              x2="100"
+                              y2="0"
+                              vector-effect="non-scaling-stroke"
+                            />
+                          </svg>
+                        </span>
+                      ) : (
+                        <span
+                          className="pointer-events-none absolute -inset-px rounded-md"
+                          aria-hidden="true"
+                        ></span>
+                      )}
                     </label>
 
                     <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
@@ -407,14 +570,38 @@ const SingleProduct = () => {
                         type="radio"
                         name="size-choice"
                         value="2XL"
+                        disabled={selectedProduct.size !== '2XL'}
+                        onClick={(e) => setSize(e.target.value)}
                         className="sr-only"
                         aria-labelledby="size-choice-6-label"
                       />
                       <span id="size-choice-6-label">2XL</span>
-                      <span
-                        className="pointer-events-none absolute -inset-px rounded-md"
-                        aria-hidden="true"
-                      ></span>
+                      {selectedProduct.size !== '2XL' ? (
+                        <span
+                          aria-hidden="true"
+                          className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
+                        >
+                          <svg
+                            className="absolute inset-0 h-full w-full stroke-2 text-gray-200"
+                            viewBox="0 0 100 100"
+                            preserveAspectRatio="none"
+                            stroke="currentColor"
+                          >
+                            <line
+                              x1="0"
+                              y1="100"
+                              x2="100"
+                              y2="0"
+                              vector-effect="non-scaling-stroke"
+                            />
+                          </svg>
+                        </span>
+                      ) : (
+                        <span
+                          className="pointer-events-none absolute -inset-px rounded-md"
+                          aria-hidden="true"
+                        ></span>
+                      )}
                     </label>
 
                     <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
@@ -422,24 +609,78 @@ const SingleProduct = () => {
                         type="radio"
                         name="size-choice"
                         value="3XL"
+                        disabled={selectedProduct.size !== '3XL'}
+                        onClick={(e) => setSize(e.target.value)}
                         className="sr-only"
                         aria-labelledby="size-choice-7-label"
                       />
                       <span id="size-choice-7-label">3XL</span>
 
-                      <span
-                        className="pointer-events-none absolute -inset-px rounded-md"
-                        aria-hidden="true"
-                      ></span>
+                      {selectedProduct.size !== '3XL' ? (
+                        <span
+                          aria-hidden="true"
+                          className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
+                        >
+                          <svg
+                            className="absolute inset-0 h-full w-full stroke-2 text-gray-200"
+                            viewBox="0 0 100 100"
+                            preserveAspectRatio="none"
+                            stroke="currentColor"
+                          >
+                            <line
+                              x1="0"
+                              y1="100"
+                              x2="100"
+                              y2="0"
+                              vector-effect="non-scaling-stroke"
+                            />
+                          </svg>
+                        </span>
+                      ) : (
+                        <span
+                          className="pointer-events-none absolute -inset-px rounded-md"
+                          aria-hidden="true"
+                        ></span>
+                      )}
                     </label>
                   </div>
                 </fieldset>
               </div>
+              <div>
+                <label for="Quantity" class="sr-only">
+                  {' '}
+                  Quantity{' '}
+                </label>
 
+                <div className="flex items-center my-7 gap-1">
+                  <button
+                    type="button"
+                    className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
+                    onClick={() => setQuantity(quantity - 1)}
+                  >
+                    -
+                  </button>
+
+                  <input
+                    type="number"
+                    id="Quantity"
+                    value={quantity}
+                    className="w-24 h-10 border-gray-200 rounded sm:text-sm text-center"
+                  />
+
+                  <button
+                    type="button"
+                    className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
+                    onClick={() => setQuantity(quantity + 1)}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
               <button
                 type="submit"
                 onClick={addItemsToCart}
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className=" flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
                 Add to bag
               </button>

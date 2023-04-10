@@ -11,6 +11,7 @@ import ShoppingCart from './components/pages/ShoppingCart/ShoppingCart';
 import Checkout from './components/pages/Checkout/Checkout';
 import AllProducts from './components/pages/AllProducts/AllProducts';
 import Category from './components/pages/Category/Category';
+import SearchPhrase from './components/pages/SearchPhrase/SearchPhrase';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/products" element={<AllProducts/>} />
         <Route path="/product/:id" element={<SingleProduct />} />
         <Route path="/product/category/:category" element={<Category />} />
+        <Route path="/product/searchphrase/:phrase" element={<SearchPhrase />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/shoppingcart" element={<ShoppingCart />} />

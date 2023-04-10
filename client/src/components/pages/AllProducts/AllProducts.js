@@ -2,7 +2,7 @@
 import MainProducts from '../MainProducts/MainProducts';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchProducts } from '../../../redux/productReducer';
+import { fetchProducts } from '../../../redux/productSlice';
 
 
 const AllProducts = () => {

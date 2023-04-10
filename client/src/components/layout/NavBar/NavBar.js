@@ -8,6 +8,7 @@ import logo from './logo.png';
 import { ShoppingBagIcon, User, UserIcon } from '@heroicons/react/24/outline';
 import ShoppingCart from '../../pages/ShoppingCart/ShoppingCart';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -16,6 +17,9 @@ const NavBar = () => {
   };
 
   const [openCart, setOpenCart] = useState(false);
+
+  const [searchValue, setSearchValue] = useState('');
+  const totalQuantity = useSelector(state => state.totalQuantity)
   return (
     <Popover className="mx-auto max-w-2xl  sm:px-6 lg:max-w-7xl lg:px-8 flex items-center  px-6 py-2 h-24">
       <a href="/">
@@ -26,11 +30,15 @@ const NavBar = () => {
           <input
             type="text"
             placeholder="Search product"
-            className="rounded-full font-serif border-gray-500 border-2 text-[14px] text-gray-400 px-1 lg:px-8 placeholder-gray-400 bg-inherit outline-none"
+            value={searchValue}
+            onChange={ (event) => setSearchValue(event.target.value)}
+            className="rounded-full font-serif border-gray-500 border-[1.5px] text-[13px] text-gray-00 px-1 py-[2px] lg:px-8 placeholder-gray-600 bg-inherit outline-none"
           />
-          <div className="absolute right-2 cursor-pointer">
-            <AiOutlineSearch size={22} />
-          </div>
+          <Link to={'/product/searchphrase/' + `${searchValue}`}>
+            <div className="absolute right-2 top-[50%] translate-y-[-50%] cursor-pointer">
+              <AiOutlineSearch size={22} />
+            </div>
+          </Link>
         </form>
       </div>
       <div className="grow">
@@ -61,16 +69,16 @@ const NavBar = () => {
             className="ml-4 flow-root lg:ml-6"
             onClick={() => setOpenCart(true)}
           >
-            <a href="#" className="group -m-2 flex items-center p-2">
+            <div className="group -m-2 relative flex items-center p-2">
               <ShoppingBagIcon
                 className="h-6 w-6 flex-shrink-0 text-gray-900 group-hover:text-gray-500"
                 aria-hidden="true"
               />
-              <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                0
+              <span className="ml-2 absolute h-[14px] w-[14px] right-1 top-6  text-sm font-medium bg-[#4f46e5] rounded-full text-white  group-hover:text-gray-800">
+                <p className='text-[12px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>0</p>
               </span>
               <span className="sr-only">items in cart, view bag</span>
-            </a>
+            </div>
             <ShoppingCart openCart={openCart} setOpenCart={setOpenCart} />
           </div>
         </div>
@@ -158,7 +166,7 @@ const NavBar = () => {
                         aria-hidden="true"
                       />
                       <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                        0
+                        {totalQuantity}
                       </span>
                       <span className="sr-only">items in cart, view bag</span>
                     </a>

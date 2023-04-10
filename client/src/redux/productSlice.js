@@ -1,11 +1,13 @@
+
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { API_URL } from '../config';
+
 
 const initialState = {
   products: [],
   selectedProduct: null,
   productByCategory: null,
+  productBySearchPhrase: null,
   isLoading: false,
   error: null,
 };
@@ -26,6 +28,9 @@ export const productSlice = createSlice({
     setSelectedProduct: (state, action) => {
       state.selectedProduct = action.payload;
     },
+    setProductBySearchPhrase: (state, action) => {
+      state.productBySearchPhrase = action.payload;
+    },
     setProductByCategory: (state, action) => {
       state.productByCategory = action.payload;
     }
@@ -33,7 +38,7 @@ export const productSlice = createSlice({
 });
 
 
-export const { setLoading, setError, setProducts,setSelectedProduct,setProductByCategory } = productSlice.actions;
+export const { setLoading, setError, setProducts,setSelectedProduct,setProductByCategory, setProductBySearchPhrase } = productSlice.actions;
 
 export const fetchProducts = () => async (dispatch) => {
   dispatch(setLoading(true));
@@ -62,6 +67,16 @@ export const fetchProductByCategory = (category) => async (dispatch) => {
   try {
     const response = await axios.get(`http://localhost:3000/api/products/category/${category}`);
     dispatch(setProductByCategory(response.data));
+  } catch (error) {
+    dispatch(setError(error.message));
+  }
+  dispatch(setLoading(false));
+};
+export const fetchProductBySearchPhrase = (phrase) => async (dispatch) => {
+  dispatch(setLoading(true));
+  try {
+    const response = await axios.get(`http://localhost:3000/api/products/searchphrase/${phrase}`);
+    dispatch(setProductBySearchPhrase(response.data));
   } catch (error) {
     dispatch(setError(error.message));
   }

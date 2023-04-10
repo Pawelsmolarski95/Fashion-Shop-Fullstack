@@ -36,7 +36,7 @@ export class ProductsService {
     return await this.prismaService.product.findMany({
       where: {
         name: {
-          contains: searchphrase,
+          contains: 'searchphrase',
         },
       },
     });

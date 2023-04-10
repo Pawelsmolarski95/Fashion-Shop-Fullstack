@@ -1,17 +1,24 @@
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProductById } from "../../../redux/productReducer";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProductById } from '../../../redux/productSlice';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { addItem } from '../../../redux/cartSlice';
 
 const SingleProduct = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { selectedProduct, isLoading, error } = useSelector((state) => state.products);
+
+  const { selectedProduct, isLoading, error } = useSelector(
+    (state) => state.products,
+  );
 
   useEffect(() => {
     dispatch(fetchProductById(id));
   }, [dispatch, id]);
+
+  const addItemsToCart = () => {
+    dispatch(addItem(selectedProduct));
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -24,8 +31,7 @@ const SingleProduct = () => {
   if (!selectedProduct) {
     return <div>No product selected</div>;
   }
-
-
+  console.log(selectedProduct);
   return (
     <div className="bg-white">
       <div className="pt-6">
@@ -124,7 +130,9 @@ const SingleProduct = () => {
 
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
-            <p className="text-3xl tracking-tight text-gray-900">${selectedProduct.price}</p>
+            <p className="text-3xl tracking-tight text-gray-900">
+              ${selectedProduct.price}
+            </p>
 
             <div className="mt-6">
               <h3 className="sr-only">Reviews</h3>
@@ -430,6 +438,7 @@ const SingleProduct = () => {
 
               <button
                 type="submit"
+                onClick={addItemsToCart}
                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
                 Add to bag
@@ -458,7 +467,9 @@ const SingleProduct = () => {
               <div className="mt-4">
                 <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
                   <li className="text-gray-400">
-                    <span className="text-gray-600">Hand cut and sewn locally</span>
+                    <span className="text-gray-600">
+                      Hand cut and sewn locally
+                    </span>
                   </li>
 
                   <li className="text-gray-400">
@@ -474,7 +485,9 @@ const SingleProduct = () => {
                   </li>
 
                   <li className="text-gray-400">
-                    <span className="text-gray-600">Ultra-soft 100% cotton</span>
+                    <span className="text-gray-600">
+                      Ultra-soft 100% cotton
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -496,80 +509,6 @@ const SingleProduct = () => {
         </div>
       </div>
     </div>
-    // <div classNameName="w-full mt-28 m-auto">
-    //   <div classNameName="flex max-w-[1200px] flex-col m-auto justify-center items-center">
-    //     <div classNameName=" self-start">
-    //       <Breadcrumbs aria-label="breadcrumb">
-    //         <Link underline="hover" color="inherit" href="/">
-    //           Electronics
-    //         </Link>
-    //         <Link
-    //           underline="hover"
-    //           color="inherit"
-    //           href="/material-ui/getting-started/installation/"
-    //         >
-    //           Phones
-    //         </Link>
-    //         <Typography color="text.primary">Iphone 12 Pro</Typography>
-    //       </Breadcrumbs>
-    //     </div>
-    //     <div classNameName="flex w-full gap-14 mt-8">
-    //       <div classNameName="flex  ">
-    //         <img
-    //           src={phone}
-    //           alt="phone"
-    //           classNameName="object-cover"
-    //           style={{ width: 600, height: 600 }}
-    //         />
-    //         <div></div>
-    //       </div>
-    //       <div classNameName="flex flex-col gap-6">
-    //         <div classNameName="w-full flex flex-col gap-6">
-    //           <h1 classNameName="text-[30px] uppercase tracking-wider">
-    //             Iphone 12 Pro{' '}
-    //           </h1>
-    //           <p classNameName="text-sm text-gray-600 ">
-    //             Lorem ipsum lorem ipsum lorem ipsum Lorem ipsum lorem ipsum
-    //             lorem ipsum{' '}
-    //           </p>
-    //           <div classNameName="flex items-center">
-    //             <Rating
-    //               name="simple-controlled"
-    //               value={value}
-    //               onChange={(event, newValue) => {
-    //                 setValue(newValue);
-    //               }}
-    //             />
-    //             <p classNameName="text-m text-gray-600">(133)</p>
-    //           </div>
-    //         </div>
-    //         <span classNameName="bg-gray-300 w-full h-[1px]"></span>
-    //         <div>
-    //           <h1 classNameName="text-[24px] tracking-wide">Price: 300$</h1>
-    //         </div>
-    //         <span classNameName="bg-gray-300 w-full h-[1px]"></span>
-    //         <div classNameName="flex flex-col gap-6">
-    //           <h3 classNameName="text-[20px]">Choose color</h3>
-    //           <div classNameName="flex items-center  gap-8">
-    //             <button classNameName= " bg-lime-800 focus:ring-4 ring-offset-2 focus:ring-lime-800 hover:scale-110 rounded-full w-10 h-10 cursor-pointer" onClick={() => setChooseColor('green')}>
-    //               {' '}
-    //             </button>
-    //             <button classNameName="  bg-red-700  focus:ring-4 ring-offset-2 focus:ring-red-700   hover:scale-110 rounded-full w-10 h-10 cursor-pointer "  onClick={() =>setChooseColor('red')}>
-    //               {' '}
-    //             </button>
-    //             <button classNameName=" bg-yellow-500 focus:ring-4 ring-offset-2 focus:ring-yellow-500  hover:scale-110 rounded-full w-10 h-10 cursor-pointer"  onClick={() => setChooseColor('yellow')}>
-    //               {' '}
-    //             </button>
-    //             <button classNameName="  bg-sky-700 focus:ring-4 ring-offset-2 focus:ring-sky-700  hover:scale-110 rounded-full w-10 h-10 cursor-pointer"  onClick={() => setChooseColor('sky')}>
-    //               {' '}
-    //             </button>
-    //           </div>
-    //         </div>
-    //         <span classNameName="bg-gray-300 w-full h-[1px]"></span>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 

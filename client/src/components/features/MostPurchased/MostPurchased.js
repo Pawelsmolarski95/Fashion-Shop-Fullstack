@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import { AiOutlineArrowRight } from 'react-icons/ai';
-import { fetchProducts } from '../../../redux/productReducer';
+import { fetchProducts } from '../../../redux/productSlice';
 import { useEffect } from 'react';
 
 const MostPurchased = () => {

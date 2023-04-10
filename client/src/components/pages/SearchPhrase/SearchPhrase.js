@@ -2,19 +2,19 @@ import { useParams } from 'react-router-dom';
 import MainProducts from '../MainProducts/MainProducts';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchProductByCategory } from '../../../redux/productSlice';
+import { fetchProductBySearchPhrase } from '../../../redux/productSlice';
 
-const Category = () => {
-  const { category } = useParams();
+const SearchPhrase = () => {
+  const { phrase } = useParams();
 
   const dispatch = useDispatch();
-  const { productByCategory, isLoading, error } = useSelector(
+  const { productBySearchPhrase, isLoading, error } = useSelector(
     (state) => state.products,
   );
 
   useEffect(() => {
-    dispatch(fetchProductByCategory(category));
-  }, [dispatch, category]);
+    dispatch(fetchProductBySearchPhrase(phrase));
+  }, [dispatch, phrase]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -24,15 +24,15 @@ const Category = () => {
     return <div>Error: {error}</div>;
   }
 
-  if (!productByCategory) {
+  if (!productBySearchPhrase) {
     return <div>No product selected</div>;
   }
 
   return (
     <div>
-      <MainProducts products={productByCategory} />
+      <MainProducts products={productBySearchPhrase} />
     </div>
   );
 };
 
-export default Category;
+export default SearchPhrase;

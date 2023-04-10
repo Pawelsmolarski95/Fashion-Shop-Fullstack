@@ -8,6 +8,7 @@ import {
   ParseUUIDPipe,
   Post,
   Put,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { AdminAuthGuard } from 'src/auth/admin-auth.guard';
@@ -33,16 +34,17 @@ export class ProductsController {
   }
   @Get('/category/:category')
   async getProductByCategory(@Param('category') category: string) {
-    const productByCategory = await this.productsService.getByCategory(category);
+    const productByCategory = await this.productsService.getByCategory(
+      category,
+    );
     if (!productByCategory) throw new NotFoundException('Products not found');
     return productByCategory;
   }
 
-  @Get('/searchphrase/:searchphrase')
-  async getProductBySearchPhrase(@Param('searchphrase') searchphrase: string) {
-    const productBySearchPhrase = await this.productsService.getBySearchPhrase(searchphrase);
-    if (!productBySearchPhrase) throw new NotFoundException('Products not found');
-    return productBySearchPhrase;
+  @Get('/searchphrase/:phrase')
+  async searchForPhrase(@Query('phrase') phrase: string): Promise<any> {
+    const results = await this.productsService.getBySearchPhrase(phrase);
+    return results;
   }
 
   @Delete('/:id')
@@ -58,11 +60,11 @@ export class ProductsController {
     return this.productsService.createNewProduct(productData);
   }
 
-  @Put('/:id') 
+  @Put('/:id')
   updateProductById(
     @Param('id', new ParseUUIDPipe()) id: string,
-    @Body() productData: UpdateProductDTO
+    @Body() productData: UpdateProductDTO,
   ) {
-    return this.productsService.updateProductById(id, productData); 
+    return this.productsService.updateProductById(id, productData);
   }
 }

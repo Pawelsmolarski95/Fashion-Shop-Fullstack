@@ -32,11 +32,11 @@ export class ProductsService {
     });
   }
 
-  getBySearchPhrase(searchphrase: string): Promise<Product[] | null> {
-    return this.prismaService.product.findMany({
+  async getBySearchPhrase(searchphrase: string): Promise<Product[] | null> {
+    return await this.prismaService.product.findMany({
       where: {
         name: {
-          contains: 'searchphrase',
+          contains: searchphrase,
         },
       },
     });

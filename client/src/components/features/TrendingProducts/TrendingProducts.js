@@ -1,25 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import { AiOutlineArrowRight } from 'react-icons/ai';
-import { fetchProducts } from '../../../redux/productSlice';
 import { useEffect } from 'react';
+import {
+
+  getMostTrending,
+
+} from '../../../redux/productsRedux';
 
 const TrendingProducts = () => {
 
-  const dispatch = useDispatch();
-  const { products, isLoading, error } = useSelector((state) => state.products);
+  const products = useSelector(getMostTrending);
 
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
   return (
     <>
       <div className="bg-white">
@@ -39,13 +32,14 @@ const TrendingProducts = () => {
           </div>
 
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {products.slice(0, 4).map((product) => (
-            <ProductBox
-              id={product.id}
-              name={product.name}
-              price={product.price}
-            />
-          ))}
+            {products.slice(0, 4).map((product) => (
+              <ProductBox
+              key={product.id} 
+                id={product.id}
+                name={product.name}
+                price={product.price}
+              />
+            ))}
           </div>
         </div>
       </div>

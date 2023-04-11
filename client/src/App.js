@@ -12,14 +12,23 @@ import Checkout from './components/pages/Checkout/Checkout';
 import AllProducts from './components/pages/AllProducts/AllProducts';
 import Category from './components/pages/Category/Category';
 import SearchPhrase from './components/pages/SearchPhrase/SearchPhrase';
+import Contact from './components/pages/Contact/Contact';
+import { useDispatch } from 'react-redux';
+import { loadProductsRequest } from './redux/productsRedux';
+import { useEffect } from 'react';
 
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadProductsRequest());
+  }, [dispatch]);
   return (
     <main>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/products" element={<AllProducts/>} />
         <Route path="/product/:id" element={<SingleProduct />} />
         <Route path="/product/category/:category" element={<Category />} />

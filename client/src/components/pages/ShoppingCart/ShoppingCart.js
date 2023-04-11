@@ -1,17 +1,13 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useDispatch, useSelector } from 'react-redux';
-import { items, removeItem, totalAmount } from '../../../redux/cartSlice';
+
+
 
 const ShoppingCart = ({ openCart, setOpenCart }) => {
-  const dispatch = useDispatch();
 
-
-  const removeItemFromCart = () => {
-
-    dispatch(removeItem());
-  };
+ 
 
   return (
     <Transition.Root show={openCart} as={Fragment}>
@@ -70,7 +66,7 @@ const ShoppingCart = ({ openCart, setOpenCart }) => {
                             role="list"
                             className="-my-6 divide-y divide-gray-200"
                           >
-                            {items.map((product) => (
+                            {/* {cartProducts.map((product) => (
                               <li key={product.id} className="flex py-6">
                                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                   <img
@@ -101,7 +97,7 @@ const ShoppingCart = ({ openCart, setOpenCart }) => {
                                         <button
                                           type="button"
                                           className="font-medium text-indigo-600 hover:text-indigo-500"
-                                          onClick={removeItemFromCart()}
+                                        
                                         >
                                           Remove
                                         </button>
@@ -110,7 +106,7 @@ const ShoppingCart = ({ openCart, setOpenCart }) => {
                                   </div>
                                 </div>
                               </li>
-                            ))}
+                            ))} */}
                           </ul>
                         </div>
                       </div>
@@ -119,7 +115,7 @@ const ShoppingCart = ({ openCart, setOpenCart }) => {
                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <p>Subtotal</p>
-                        <p>${totalAmount}</p>
+                        <p>$</p>
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">
                         Shipping and taxes calculated at checkout.

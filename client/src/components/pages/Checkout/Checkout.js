@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { items, totalAmount } from '../../../redux/cartSlice';
+
 
 const Checkout = () => {
   const countries = ['China', 'Russia', 'UK'];
@@ -69,7 +69,7 @@ const Checkout = () => {
                             role="list"
                             className="-my-6 divide-y divide-gray-200"
                           >
-                            {items.map((product) => (
+                            {/* {items.map((product) => (
                               <li key={product.id} className="flex py-6">
                                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                   <img
@@ -101,12 +101,12 @@ const Checkout = () => {
                                   </div>
                                 </div>
                               </li>
-                            ))}
+                            ))} */}
                           </ul>
                         </div>
                         <div className="flex justify-between text-base font-medium text-gray-900">
                         <p>Subtotal</p>
-                        <p>${totalAmount}</p>
+                        {/* <p>${totalAmount}</p> */}
                       </div>
                       </div>
                     </div>

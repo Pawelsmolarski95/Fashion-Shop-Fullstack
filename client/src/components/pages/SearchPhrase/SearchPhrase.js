@@ -2,32 +2,20 @@ import { useParams } from 'react-router-dom';
 import MainProducts from '../MainProducts/MainProducts';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchProductBySearchPhrase } from '../../../redux/productSlice';
+import { getProductBySearchPhrase, loadSearchedProductsRequest } from '../../../redux/productsRedux';
+
 
 const SearchPhrase = () => {
   const { phrase } = useParams();
 
   const dispatch = useDispatch();
-  const { productBySearchPhrase, isLoading, error } = useSelector(
-    (state) => state.products,
-  );
+  const productBySearchPhrase = useSelector(getProductBySearchPhrase);
+
 
   useEffect(() => {
-    dispatch(fetchProductBySearchPhrase(phrase));
-  }, [dispatch, phrase]);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!productBySearchPhrase) {
-    return <div>No product selected</div>;
-  }
-
+    dispatch(loadSearchedProductsRequest(phrase));
+  }, [dispatch]);
+  
   return (
     <div>
       <MainProducts products={productBySearchPhrase} />

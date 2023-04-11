@@ -9,7 +9,7 @@ import { ShoppingBagIcon, User, UserIcon } from '@heroicons/react/24/outline';
 import ShoppingCart from '../../pages/ShoppingCart/ShoppingCart';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { totalQuantity } from '../../../redux/cartSlice';
+
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -21,7 +21,7 @@ const NavBar = () => {
 
   const [searchValue, setSearchValue] = useState('');
 
-  const [ quantityItems, setQuantityItems] = useState(totalQuantity)
+
 
   return (
     <Popover className="mx-auto max-w-2xl  sm:px-6 lg:max-w-7xl lg:px-8 flex items-center  px-6 py-2 h-24">
@@ -56,7 +56,8 @@ const NavBar = () => {
           <Link to={'/product/category/accessories'}>
             <li>Accesories</li>
           </Link>
-          <li>Contact</li>
+          <Link to={'/contact'}><li>Contact</li>
+          </Link>
         </ul>
       </div>
       <div className="grow ">
@@ -78,7 +79,7 @@ const NavBar = () => {
                 aria-hidden="true"
               />
               <span className="ml-2 absolute h-[16px] w-[16px] right-1 top-6  text-sm font-medium bg-[#4f46e5] rounded-full text-white  group-hover:text-gray-800">
-                <p className='text-[11px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>{quantityItems}</p>
+                <p className='text-[11px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>0</p>
               </span>
               <span className="sr-only">items in cart, view bag</span>
             </div>
@@ -169,7 +170,7 @@ const NavBar = () => {
                         aria-hidden="true"
                       />
                       <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                       {totalQuantity}
+                   
                       </span>
                       <span className="sr-only">items in cart, view bag</span>
                     </a>

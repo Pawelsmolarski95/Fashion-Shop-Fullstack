@@ -1,50 +1,41 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProductById } from '../../../redux/productSlice';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { addItem } from '../../../redux/cartSlice';
+import { getProductById } from '../../../redux/productsRedux';
+import { API_URL } from '../../../config';
+
+
 
 const SingleProduct = () => {
+
   const { id } = useParams();
-  const dispatch = useDispatch();
-
-  const { selectedProduct, isLoading, error } = useSelector(
-    (state) => state.products,
-  );
-  useEffect(() => {
-    dispatch(fetchProductById(id));
-  }, [dispatch, id]);
-
+  const [product, setProduct] = useState(null)
+  const [isLoading, setLoading] = useState(true);
   const [color, setColor] = useState('');
   const [size, setSize] = useState('');
   const [quantity, setQuantity] = useState(1);
 
+  useEffect(() => {
+    fetch("http://localhost:3000/api/products/"  + id)
+      .then((response) => response.json())
+      .then((data) => {
+        setProduct(data);
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (isLoading) {
+    return <div className="App">Loading...</div>;
+  }
 
   const addToCartProduct = {
-    ...selectedProduct,
+    ...product,
     size,
     color,
     quantity,
   };
 
 
-
-  const addItemsToCart = () => {
-    
-    dispatch(addItem(addToCartProduct));
-  };
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!selectedProduct) {
-    return <div>No product selected</div>;
-  }
 
   return (
     <div className="bg-white">
@@ -96,7 +87,7 @@ const SingleProduct = () => {
                 aria-current="page"
                 className="font-medium text-gray-500 hover:text-gray-600"
               >
-                {selectedProduct.name}
+                {product.name}
               </a>
             </li>
           </ol>
@@ -145,7 +136,7 @@ const SingleProduct = () => {
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
             <p className="text-3xl tracking-tight text-gray-900">
-              ${selectedProduct.price}
+              ${product.price}
             </p>
 
             <div className="mt-6">
@@ -313,13 +304,13 @@ const SingleProduct = () => {
                         type="radio"
                         name="size-choice"
                         value="XXS"
-                        disabled={selectedProduct.size !== 'XXS'}
+                        disabled={product.size !== 'XXS'}
                         onClick={(e) => setSize(e.target.value)}
                         className="sr-only"
                         aria-labelledby="size-choice-0-label"
                       />
                       <span id="size-choice-0-label">XXS</span>
-                      {selectedProduct.size !== 'XXS' ? (
+                      {product.size !== 'XXS' ? (
                         <span
                           aria-hidden="true"
                           className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
@@ -371,14 +362,14 @@ const SingleProduct = () => {
                         type="radio"
                         name="size-choice"
                         value="XS"
-                        disabled={selectedProduct.size !== 'XS'}
+                        disabled={product.size !== 'XS'}
                         className="sr-only"
                         onClick={(e) => setSize(e.target.value)}
                         aria-labelledby="size-choice-1-label"
                       />
                       <span id="size-choice-1-label">XS</span>
 
-                      {selectedProduct.size !== 'XS' ? (
+                      {product.size !== 'XS' ? (
                         <span
                           aria-hidden="true"
                           className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
@@ -411,14 +402,14 @@ const SingleProduct = () => {
                         type="radio"
                         name="size-choice"
                         value="S"
-                        disabled={selectedProduct.size !== 'S'}
+                        disabled={product.size !== 'S'}
                         onClick={(e) => setSize(e.target.value)}
                         className="sr-only"
                         aria-labelledby="size-choice-2-label"
                       />
                       <span id="size-choice-2-label">S</span>
 
-                      {selectedProduct.size !== 'S' ? (
+                      {product.size !== 'S' ? (
                         <span
                           aria-hidden="true"
                           className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
@@ -451,14 +442,14 @@ const SingleProduct = () => {
                         type="radio"
                         name="size-choice"
                         value="M"
-                        disabled={selectedProduct.size !== 'M'}
+                        disabled={product.size !== 'M'}
                         onClick={(e) => setSize(e.target.value)}
                         className="sr-only"
                         aria-labelledby="size-choice-3-label"
                       />
                       <span id="size-choice-3-label">M</span>
 
-                      {selectedProduct.size !== 'M' ? (
+                      {product.size !== 'M' ? (
                         <span
                           aria-hidden="true"
                           className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
@@ -491,14 +482,14 @@ const SingleProduct = () => {
                         type="radio"
                         name="size-choice"
                         value="L"
-                        disabled={selectedProduct.size !== 'L'}
+                        disabled={product.size !== 'L'}
                         onClick={(e) => setSize(e.target.value)}
                         className="sr-only"
                         aria-labelledby="size-choice-4-label"
                       />
                       <span id="size-choice-4-label">L</span>
 
-                      {selectedProduct.size !== 'L' ? (
+                      {product.size !== 'L' ? (
                         <span
                           aria-hidden="true"
                           className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
@@ -531,13 +522,13 @@ const SingleProduct = () => {
                         type="radio"
                         name="size-choice"
                         value="XL"
-                        disabled={selectedProduct.size !== 'XL'}
+                        disabled={product.size !== 'XL'}
                         onClick={(e) => setSize(e.target.value)}
                         className="sr-only"
                         aria-labelledby="size-choice-5-label"
                       />
                       <span id="size-choice-5-label">XL</span>
-                      {selectedProduct.size !== 'XL' ? (
+                      {product.size !== 'XL' ? (
                         <span
                           aria-hidden="true"
                           className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
@@ -570,13 +561,13 @@ const SingleProduct = () => {
                         type="radio"
                         name="size-choice"
                         value="2XL"
-                        disabled={selectedProduct.size !== '2XL'}
+                        disabled={product.size !== '2XL'}
                         onClick={(e) => setSize(e.target.value)}
                         className="sr-only"
                         aria-labelledby="size-choice-6-label"
                       />
                       <span id="size-choice-6-label">2XL</span>
-                      {selectedProduct.size !== '2XL' ? (
+                      {product.size !== '2XL' ? (
                         <span
                           aria-hidden="true"
                           className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
@@ -609,14 +600,14 @@ const SingleProduct = () => {
                         type="radio"
                         name="size-choice"
                         value="3XL"
-                        disabled={selectedProduct.size !== '3XL'}
+                        disabled={product.size !== '3XL'}
                         onClick={(e) => setSize(e.target.value)}
                         className="sr-only"
                         aria-labelledby="size-choice-7-label"
                       />
                       <span id="size-choice-7-label">3XL</span>
 
-                      {selectedProduct.size !== '3XL' ? (
+                      {product.size !== '3XL' ? (
                         <span
                           aria-hidden="true"
                           className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
@@ -679,7 +670,7 @@ const SingleProduct = () => {
               </div>
               <button
                 type="submit"
-                onClick={addItemsToCart}
+               
                 className=" flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
                 Add to bag

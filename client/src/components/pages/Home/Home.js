@@ -10,10 +10,7 @@ import { useEffect } from 'react';
 
 
 const Home = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadProductsRequest());
-  }, [dispatch]);
+
   return (
     <>
       <Banner />

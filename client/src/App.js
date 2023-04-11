@@ -16,6 +16,7 @@ import Contact from './components/pages/Contact/Contact';
 import { useDispatch } from 'react-redux';
 import { loadProductsRequest } from './redux/productsRedux';
 import { useEffect } from 'react';
+import { getAllUsers } from './redux/userRedux';
 
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
   useEffect(() => {
     dispatch(loadProductsRequest());
   }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getAllUsers());
+  // }, [dispatch]);
   return (
     <main>
       <NavBar />

@@ -1,25 +1,24 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getProductById } from '../../../redux/productsRedux';
 import { API_URL } from '../../../config';
 
-
-
 const SingleProduct = () => {
-
   const { id } = useParams();
-  const [product, setProduct] = useState(null)
+  const [product, setProduct] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [color, setColor] = useState('');
   const [size, setSize] = useState('');
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(4);
+  const [price, setPrice] = useState('');
+  const [cart, setCart] = useState('');
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/products/"  + id)
+    fetch('http://localhost:3000/api/products/' + id)
       .then((response) => response.json())
       .then((data) => {
         setProduct(data);
+        setPrice(data.price);
         setLoading(false);
       });
   }, [id]);
@@ -35,7 +34,12 @@ const SingleProduct = () => {
     quantity,
   };
 
-
+  const handleCart = (e) => {
+    e.preventDefault();
+    setCart(addToCartProduct);
+    localStorage.setItem('cart', JSON.stringify([cart]));
+    localStorage.setItem('totalQuantity', JSON.stringify(cart.quantity));
+  };
 
   return (
     <div className="bg-white">
@@ -670,7 +674,7 @@ const SingleProduct = () => {
               </div>
               <button
                 type="submit"
-               
+                onClick={handleCart}
                 className=" flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
                 Add to bag

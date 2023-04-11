@@ -3,11 +3,8 @@ import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useDispatch, useSelector } from 'react-redux';
 
-
-
 const ShoppingCart = ({ openCart, setOpenCart }) => {
 
- 
 
   return (
     <Transition.Root show={openCart} as={Fragment}>
@@ -66,12 +63,48 @@ const ShoppingCart = ({ openCart, setOpenCart }) => {
                             role="list"
                             className="-my-6 divide-y divide-gray-200"
                           >
-                            {/* {cartProducts.map((product) => (
-                              <li key={product.id} className="flex py-6">
+                            {/* {Array.isArray(items) ? (
+                              items.map((product) => (
+                                <li key={product.id} className="flex py-6">
+                                  <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                           
+                                  </div>
+
+                                  <div className="ml-4 flex flex-1 flex-col">
+                                    <div>
+                                      <div className="flex justify-between text-base font-medium text-gray-900">
+                                        <h3>
+                                          <a href={product.href}>
+                                            {product.name}
+                                          </a>
+                                        </h3>
+                                        <p className="ml-4">{product.price}$</p>
+                                      </div>
+                                      <p className="mt-1 text-sm text-gray-500">
+                                        {product.color}
+                                      </p>
+                                      <div className="flex flex-1 items-end justify-between text-sm">
+                                        <p>x {product.quantity}</p>
+
+                                        <div className="flex">
+                                          <button
+                                            type="button"
+                                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                                          >
+                                            Remove
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                              ))
+                            ) : (
+                              <li key={items.id} className="flex py-6">
                                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                   <img
-                                    src={product.image[0].fileName}
-                                    alt={product.image}
+                                    src={items.image[0].fileName}
+                                    alt={items.image}
                                     className="h-full w-full object-cover object-center"
                                   />
                                 </div>
@@ -80,24 +113,20 @@ const ShoppingCart = ({ openCart, setOpenCart }) => {
                                   <div>
                                     <div className="flex justify-between text-base font-medium text-gray-900">
                                       <h3>
-                                        <a href={product.href}>
-                                          {product.name}
-                                        </a>
+                                        <a href={items.href}>{items.name}</a>
                                       </h3>
-                                      <p className="ml-4">{product.price}$</p>
+                                      <p className="ml-4">{items.price}$</p>
                                     </div>
                                     <p className="mt-1 text-sm text-gray-500">
-                                      {product.color}
+                                      {items.color}
                                     </p>
                                     <div className="flex flex-1 items-end justify-between text-sm">
-                                     
-                                     <p>x {product.quantity}</p>
+                                      <p>x {items.quantity}</p>
 
                                       <div className="flex">
                                         <button
                                           type="button"
                                           className="font-medium text-indigo-600 hover:text-indigo-500"
-                                        
                                         >
                                           Remove
                                         </button>
@@ -106,7 +135,8 @@ const ShoppingCart = ({ openCart, setOpenCart }) => {
                                   </div>
                                 </div>
                               </li>
-                            ))} */}
+                              
+                            )} */}
                           </ul>
                         </div>
                       </div>
@@ -115,7 +145,7 @@ const ShoppingCart = ({ openCart, setOpenCart }) => {
                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <p>Subtotal</p>
-                        <p>$</p>
+                        <p>${}</p>
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">
                         Shipping and taxes calculated at checkout.

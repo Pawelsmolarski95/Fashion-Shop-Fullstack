@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BiUser } from 'react-icons/bi';
 
 import { SlArrowDown } from 'react-icons/sl';
@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 
-const NavBar = () => {
+const NavBar = ({ cart }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(!open);
@@ -79,7 +79,7 @@ const NavBar = () => {
                 aria-hidden="true"
               />
               <span className="ml-2 absolute h-[16px] w-[16px] right-1 top-6  text-sm font-medium bg-[#4f46e5] rounded-full text-white  group-hover:text-gray-800">
-                <p className='text-[11px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>0</p>
+                <p className='text-[11px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'></p>
               </span>
               <span className="sr-only">items in cart, view bag</span>
             </div>
@@ -170,7 +170,7 @@ const NavBar = () => {
                         aria-hidden="true"
                       />
                       <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                   
+                     
                       </span>
                       <span className="sr-only">items in cart, view bag</span>
                     </a>

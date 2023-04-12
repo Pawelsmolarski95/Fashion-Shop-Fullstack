@@ -4,8 +4,11 @@ import { API_URL } from '../config';
 // selectors
 export const getAllProducts = ({ products }) => products.data;
 
+// export const getProductById = ({ products }, id) =>
+//   products.data.find((product) => product.id === id);
+
 export const getProductById = ({ products }, id) =>
-  products.data.find((product) => product.id === id);
+ products.data.find((product) => product.id === id);
 
 export const getProductByCategory = ({ products }, category) =>
   products.data.filter((product) => product.category === category);

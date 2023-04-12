@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { API_URL } from '../../../config';
+import { addItem, addToCart } from '../../../redux/cartRedux';
+import { getItemById, getProductById } from '../../../redux/productsRedux';
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -11,8 +13,10 @@ const SingleProduct = () => {
   const [size, setSize] = useState('');
   const [quantity, setQuantity] = useState(4);
   const [price, setPrice] = useState('');
-  const [cart, setCart] = useState('');
+  const [totalPrice, setTotalPrice] = useState(0);
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     fetch('http://localhost:3000/api/products/' + id)
       .then((response) => response.json())
@@ -23,23 +27,41 @@ const SingleProduct = () => {
       });
   }, [id]);
 
+  // const product = useSelector(state => getProductById(state, id));
+
+  useEffect(() => {
+    if (product) {
+      setTotalPrice(product.price * quantity);
+    }
+  }, [product, quantity]);
+
   if (isLoading) {
     return <div className="App">Loading...</div>;
   }
+  let addToCartProduct = null;
 
-  const addToCartProduct = {
-    ...product,
-    size,
-    color,
-    quantity,
-  };
+  if (product) {
+    addToCartProduct = {
+      name: product.name,
+      price: price,
+      color: color,
+      size: size,
+      quantity: parseInt(quantity),
+      totalPrice: product.price * parseInt(quantity),
+      comment: '',
+      id: product.id,
+    };
+  }
 
   const handleCart = (e) => {
     e.preventDefault();
-    setCart(addToCartProduct);
-    localStorage.setItem('cart', JSON.stringify([cart]));
-    localStorage.setItem('totalQuantity', JSON.stringify(cart.quantity));
+    localStorage.setItem('cart', JSON.stringify(addToCartProduct));
+    navigate('/shoppingcart')
   };
+
+  if (isLoading) {
+    return <div className="App">Loading...</div>;
+  }
 
   return (
     <div className="bg-white">
@@ -672,13 +694,15 @@ const SingleProduct = () => {
                   </button>
                 </div>
               </div>
-              <button
-                type="submit"
-                onClick={handleCart}
-                className=" flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              >
-                Add to bag
-              </button>
+              <Link to={'/shopingcart'}>
+                <button
+                  type="submit"
+                  onClick={handleCart}
+                  className=" flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
+                  Add to bag
+                </button>
+              </Link>
             </form>
           </div>
 

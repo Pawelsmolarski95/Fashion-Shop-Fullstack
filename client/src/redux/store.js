@@ -10,7 +10,7 @@ import cartReducer from './cartRedux';
 const subreducers = {
   user: userReducer,
   products: productsReducer,
-  cart: cartReducer
+  // cart: cartReducer
 
 };
 

@@ -9,7 +9,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.setGlobalPrefix('api');
   app.use(cookieParser());
-
+ 
   const prismaService = app.get(PrismaService);
   await prismaService.enableShutdownHooks(app);
   

@@ -3,7 +3,7 @@ import ProductBox from '../../common/ProductBox/ProductBox';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 
 import { useEffect } from 'react';
-import {  getMostPurchased, getRequest, loadProductsRequest } from '../../../redux/productsRedux';
+import {  getMostPurchased, getRequest, loadProductsRequest } from '../../../redux/productsSlice';
 
 const MostPurchased = () => {
 

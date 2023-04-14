@@ -9,8 +9,9 @@ import {
   removeFromCart,
 } from '../../../redux/cartSlice';
 import { Link } from 'react-router-dom';
+import ShoppingCartOrder from '../../common/ShoppingCartOrder/ShoppingCartOrder';
 
-const ShoppingCart = () => {
+const Order = () => {
   const cart = useSelector((state) => state.cart);
   console.log(cart);
   const dispatch = useDispatch();
@@ -33,11 +34,11 @@ const ShoppingCart = () => {
   };
 
   return (
-    <div className="h-auto bg-gray-100 pt-20">
-      <h1 className="mb-10 text-center text-2xl font-bold">Your bag:</h1>
+    <div className="h-auto bg-gray-100 py-20">
+      <h1 className="mb-10 text-center text-2xl font-bold">Order</h1>
 
       <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
-        <div className="rounded-lg md:w-2/3">
+        <div className="rounded-lg md:w-[50%]">
           {cart.cartItems.length === 0 ? (
             <div className="text-center">
               <h5>Your cart is empty</h5>{' '}
@@ -45,7 +46,7 @@ const ShoppingCart = () => {
           ) : (
             <div>
               {cart.cartItems?.map((item) => (
-                <ShoppingCartItem
+                <ShoppingCartOrder
                   name={item.name}
                   id={item.id}
                   quantity={item.quantity}
@@ -58,45 +59,32 @@ const ShoppingCart = () => {
             </div>
           )}
         </div>
-
-        <div className="mt-6 mb-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
-          <div className="mb-2 flex justify-between">
-            <p className="text-gray-700">Subtotal</p>
-            <p className="text-gray-700">${totalPrice}</p>
+        <div className='flex flex-col md:w-2/3'>
+          {' '}
+          <div className="mt-6 mb-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-full">
+           
+            
           </div>
-          <div className="flex justify-between">
-            <p className="text-gray-700">Shipping</p>
-            <p className="text-gray-700">${shipping}</p>
-          </div>
-          <hr className="my-4" />
-          <div className="flex justify-between">
-            <p className="text-lg font-bold">Total</p>
-            <div className="">
-              <p className="mb-1 text-lg font-bold">
-                ${totalPrice + shipping} USD
-              </p>
-              <p className="text-sm text-gray-700">including VAT</p>
+          <div className="mt-6 mb-6 h-auto rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-full">
+            <div className="flex justify-between">
+              <p className="text-lg font-bold">Total</p>
+              <div className="">
+                <p className="mb-1 text-lg font-bold">
+                  ${totalPrice + shipping} USD
+                </p>
+              </div>
             </div>
-          </div>
-          <Link to={'/order'}>
-            <button className="mt-6 w-full rounded-md bg-[#4f46e5] py-1.5 font-medium text-blue-50">
-              Checkout
+            <div className='flex '>
+                <button className="mt-6 m-auto text-center w-[60%] rounded-md bg-[#4f46e5] py-1.5 font-medium text-blue-50">
+              Order
             </button>
-          </Link>
+            </div>
+            
+          </div>
         </div>
       </div>
-      {cart.cartItems.length !== 0 ? (
-        <div className="flex justify-center mb-5">
-          <button
-            onClick={() => handleRemoveAll()}
-            className="my-6 rounded-md border-2 text-[16px] border-[#4f46e5] text-[#4f46e5] py-1.5 px-3 font-medium text-blue-5 inline-flex"
-          >
-            Remove All
-          </button>
-        </div>
-      ) : null}
     </div>
   );
 };
 
-export default ShoppingCart;
+export default Order;

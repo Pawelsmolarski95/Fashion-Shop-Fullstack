@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import MainProducts from '../MainProducts/MainProducts';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getProductByCategory, getRequest, loadProductByCategoryRequest } from '../../../redux/productsRedux';
+import { getProductByCategory, getRequest, loadProductByCategoryRequest } from '../../../redux/productsSlice';
 
 
 const Category = () => {

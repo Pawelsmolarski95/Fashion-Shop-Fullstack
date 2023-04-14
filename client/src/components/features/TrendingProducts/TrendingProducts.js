@@ -6,7 +6,7 @@ import {
 
   getMostTrending,
 
-} from '../../../redux/productsRedux';
+} from '../../../redux/productsSlice';
 
 const TrendingProducts = () => {
 

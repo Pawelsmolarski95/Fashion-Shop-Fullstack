@@ -2,7 +2,7 @@
 import MainProducts from '../MainProducts/MainProducts';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getAllProducts, getRequest, loadProductsRequest } from '../../../redux/productsRedux';
+import { getAllProducts, getRequest, loadProductsRequest } from '../../../redux/productsSlice';
 
 
 

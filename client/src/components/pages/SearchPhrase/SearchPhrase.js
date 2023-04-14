@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import MainProducts from '../MainProducts/MainProducts';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getProductBySearchPhrase, loadSearchedProductsRequest } from '../../../redux/productsRedux';
+import { getProductBySearchPhrase, loadSearchedProductsRequest } from '../../../redux/productsSlice';
 
 
 const SearchPhrase = () => {

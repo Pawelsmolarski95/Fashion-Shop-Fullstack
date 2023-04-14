@@ -5,7 +5,7 @@ import Blog from '../../features/Blog/Blog';
 import MostPurchased from '../../features/MostPurchased/MostPurchased';
 import Newsletter from '../../features/Newsletter/Newsletter';
 import { useDispatch } from 'react-redux';
-import { loadProductsRequest } from '../../../redux/productsRedux';
+import { loadProductsRequest } from '../../../redux/productsSlice';
 import { useEffect } from 'react';
 
 

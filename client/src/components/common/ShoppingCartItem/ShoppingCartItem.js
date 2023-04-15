@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { decreaseCart } from '../../../redux/cartSlice';
 
 const ShoppingCartItem = ({
   size,
@@ -6,11 +8,14 @@ const ShoppingCartItem = ({
   quantity,
   price,
   handleRemoveFromCart,
+  handleDecrease,
+  handleIncrease,
   id,
 }) => {
   const [totalPrice, setTotalPrice] = useState();
   const [text, setText] = useState('');
 
+  console.log(quantity);
   useEffect(() => {
     const total = Math.floor(quantity * price * 100) / 100;
     const roundedTotal = total.toFixed(2);
@@ -38,24 +43,32 @@ const ShoppingCartItem = ({
           />
         </div>
         <div className="mt-4 flex flex-col relative justify-center sm:space-y-6 sm:mt-0 sm:block sm:space-x-2">
-          <button className="p-2  absolute top-[-17%] right-[-10%]" onClick={() => handleRemoveFromCart(id)}>
+          <button
+            className="p-2  absolute top-[-17%] right-[-10%]"
+            onClick={() => handleRemoveFromCart(id)}
+          >
             X{' '}
           </button>
           <div className="flex items-center border-gray-100">
-            <span className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
-              {' '}
-              -{' '}
-            </span>
+            <button onClick={() => handleDecrease(id)}>
+              <span className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
+                {' '}
+                -{' '}
+              </span>
+            </button>
+
             <input
               className="h-8 w-8 border bg-white text-center text-xs outline-none"
               type="number"
               value={quantity}
               min="1"
             />
-            <span className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
-              {' '}
-              +{' '}
-            </span>
+            <button onClick={() => handleIncrease(id)}>
+              <span className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
+                {' '}
+                +{' '}
+              </span>
+            </button>
           </div>
           <div className="flex items-center space-x-1">
             <p className="text-sm">Price: {price}$</p>

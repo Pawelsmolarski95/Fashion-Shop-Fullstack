@@ -26,7 +26,7 @@ const TrendingProducts = () => {
             </a>
 
             <div className="flex justify-center items-center gap-1">
-              <p className="text-[#4f46e5]">Shop the collection</p>
+              <p className="text-[#4f46e5]">See all products</p>
               <AiOutlineArrowRight style={{ color: '#4f46e5' }} />
             </div>
           </div>

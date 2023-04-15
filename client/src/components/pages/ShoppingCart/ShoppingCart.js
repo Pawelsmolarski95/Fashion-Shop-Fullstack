@@ -3,8 +3,11 @@ import ShoppingCartItem from '../../common/ShoppingCartItem/ShoppingCartItem';
 import ShoppingCartForm from '../../common/ShoppingCartForm/ShoppingCartForm';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  addToCart,
+  decreaseCart,
   getAllCart,
   getCart,
+  increaseCart,
   removeAllCart,
   removeFromCart,
 } from '../../../redux/cartSlice';
@@ -20,17 +23,24 @@ const ShoppingCart = () => {
     }, 0);
     return totalPrice;
   }
-  const handleRemoveFromCart = (id) => {
-    console.log(id);
-    dispatch(removeFromCart(id));
-  };
 
   const totalPrice = getTotalPrice(cart.cartItems);
   const shipping = 4.99;
 
+  const handleRemoveFromCart = (id) => {
+    dispatch(removeFromCart(id));
+  };
   const handleRemoveAll = () => {
     dispatch(removeAllCart());
   };
+
+  const handleDecrease = (id) => {
+    dispatch(decreaseCart(id));
+  }
+
+  const handleIncrease = (id) => {
+    dispatch(increaseCart(id))
+  }
 
   return (
     <div className="h-auto bg-gray-100 pt-20">
@@ -52,6 +62,8 @@ const ShoppingCart = () => {
                   price={item.price * item.quantity}
                   size={item.size}
                   handleRemoveFromCart={handleRemoveFromCart}
+                  handleDecrease={handleDecrease}
+                  handleIncrease={handleIncrease}
                   item={item}
                 />
               ))}

@@ -15,14 +15,8 @@ const cartSlice = createSlice({
   reducers: {
     addToCart(state, action) {
       const itemId = action.payload.id;
-      console.log(itemId);
-      console.log(state.cartItems)
-      const itemIndex = state.cartItems.find(
-        (item) => item.id === itemId,
-      );
-      console.log(itemIndex);
-
-      if (itemIndex ) {
+      const itemIndex = state.cartItems.find((item) => item.id === itemId);
+      if (itemIndex) {
         itemIndex.cartQuantity += 1;
       } else {
         const tempProduct = { ...action.payload, cartQuantity: 1 };
@@ -45,29 +39,33 @@ const cartSlice = createSlice({
     decreaseCart(state, action) {
       const itemId = action.payload;
       const itemIndex = state.cartItems.findIndex((item) => item.id === itemId);
-      console.log(itemId)
-      
+      console.log(itemId);
+
       if (state.cartItems[itemIndex].quantity > 1) {
         state.cartItems[itemIndex].quantity -= 1;
-
       } else if (state.cartItems[itemIndex].quantity === 1) {
         const nextCartItems = state.cartItems.filter(
           (cartItem) => cartItem.id !== itemId,
         );
         state.cartItems = nextCartItems;
-        
       }
       localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
     },
     increaseCart(state, action) {
       const itemId = action.payload;
       const itemIndex = state.cartItems.findIndex((item) => item.id === itemId);
-      state.cartItems[itemIndex].quantity += 1
-
-    }
+      state.cartItems[itemIndex].quantity += 1;
+    },
   },
 });
 
-export const { addToCart, removeFromCart, removeAllCart, decreaseCart, increaseCart } = cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  removeAllCart,
+  decreaseCart,
+  increaseCart,
+  prepareCartToOrder
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

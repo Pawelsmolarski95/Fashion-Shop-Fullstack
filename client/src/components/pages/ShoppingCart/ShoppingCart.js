@@ -3,18 +3,19 @@ import ShoppingCartItem from '../../common/ShoppingCartItem/ShoppingCartItem';
 import ShoppingCartForm from '../../common/ShoppingCartForm/ShoppingCartForm';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  addToCart,
   decreaseCart,
-  getAllCart,
-  getCart,
   increaseCart,
+  prepareCartToOrder,
   removeAllCart,
   removeFromCart,
 } from '../../../redux/cartSlice';
 import { Link } from 'react-router-dom';
 
+
 const ShoppingCart = () => {
   const cart = useSelector((state) => state.cart);
+
+  const [comment, setComment] = useState('')
   console.log(cart);
   const dispatch = useDispatch();
   function getTotalPrice(cartItems) {
@@ -23,9 +24,10 @@ const ShoppingCart = () => {
     }, 0);
     return totalPrice;
   }
-
   const totalPrice = getTotalPrice(cart.cartItems);
   const shipping = 4.99;
+
+  console.log(comment);
 
   const handleRemoveFromCart = (id) => {
     dispatch(removeFromCart(id));
@@ -36,10 +38,14 @@ const ShoppingCart = () => {
 
   const handleDecrease = (id) => {
     dispatch(decreaseCart(id));
-  }
+  };
 
   const handleIncrease = (id) => {
-    dispatch(increaseCart(id))
+    dispatch(increaseCart(id));
+  };
+  const handlePrepareToOrder = () => {
+    console.log(comment);
+    localStorage.setItem("commentToOrder", JSON.stringify(comment))
   }
 
   return (
@@ -61,40 +67,51 @@ const ShoppingCart = () => {
                   quantity={item.quantity}
                   price={item.price * item.quantity}
                   size={item.size}
+                  color={item.color}
                   handleRemoveFromCart={handleRemoveFromCart}
                   handleDecrease={handleDecrease}
                   handleIncrease={handleIncrease}
-                  item={item}
                 />
               ))}
             </div>
           )}
         </div>
-
-        <div className="mt-6 mb-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
-          <div className="mb-2 flex justify-between">
-            <p className="text-gray-700">Subtotal</p>
-            <p className="text-gray-700">${totalPrice}</p>
-          </div>
-          <div className="flex justify-between">
-            <p className="text-gray-700">Shipping</p>
-            <p className="text-gray-700">${shipping}</p>
-          </div>
+        <div className="flex flex-col md:w-[40%]">
+          <div className="mt-6 mb-6 h-full rounded-lg  bg-white p-6 shadow-md md:mt-0 ">
+          <p className="text-gray-700 mb-1">Here you can more details about your order</p>
           <hr className="my-4" />
-          <div className="flex justify-between">
-            <p className="text-lg font-bold">Total</p>
-            <div className="">
-              <p className="mb-1 text-lg font-bold">
-                ${totalPrice + shipping} USD
-              </p>
-              <p className="text-sm text-gray-700">including VAT</p>
-            </div>
+            <textarea
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              className='border p-1 border-[#e5e7eb] w-full h-auto rounded-lg '
+            />
           </div>
-          <Link to={'/order'}>
-            <button className="mt-6 w-full rounded-md bg-[#4f46e5] py-1.5 font-medium text-blue-50">
-              Checkout
-            </button>
-          </Link>
+
+          <div className="mt-6 mb-6 h-full rounded-lg  bg-white p-6 shadow-md md:mt-0 ">
+            <div className="mb-2 flex justify-between">
+              <p className="text-gray-700">Subtotal</p>
+              <p className="text-gray-700">${totalPrice}</p>
+            </div>
+            <div className="flex justify-between">
+              <p className="text-gray-700">Shipping</p>
+              <p className="text-gray-700">${shipping}</p>
+            </div>
+            <hr className="my-4" />
+            <div className="flex justify-between">
+              <p className="text-lg font-bold">Total</p>
+              <div className="">
+                <p className="mb-1 text-lg font-bold">
+                  ${totalPrice + shipping} USD
+                </p>
+                <p className="text-sm text-gray-700">including VAT</p>
+              </div>
+            </div>
+            <Link to={'/order'}>
+              <button onClick={() => handlePrepareToOrder(comment)} className="mt-6 w-full rounded-md bg-[#4f46e5] py-1.5 font-medium text-blue-50">
+                Checkout
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
       {cart.cartItems.length !== 0 ? (

@@ -8,7 +8,7 @@ const ShoppingCartOrder = ({
   id,
 }) => {
   const [totalPrice, setTotalPrice] = useState();
-  const [text, setText] = useState('');
+
 
   useEffect(() => {
     const total = Math.floor(quantity * price * 100) / 100;
@@ -27,12 +27,6 @@ const ShoppingCartOrder = ({
       <div className="sm:ml-3 sm:flex sm:w-full gap-3 ">
         <div className="mt-5 flex flex-col justify-around sm:mt-0">
           <h2 className="text-xs font-bold text-gray-900">{name}</h2>
-          <textarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            className="w-full p-1 rounded-md border-2 placeholder-gray-200::placeholder text-xs"
-            placeholder="Here you can write more details about order"
-          />
         </div>
         <div className=" flex flex-col justify-around">
           <p className="mt-1 text-xs">Size: {size}</p>

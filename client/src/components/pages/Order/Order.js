@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
-import ShoppingCartItem from '../../common/ShoppingCartItem/ShoppingCartItem';
 import ShoppingCartForm from '../../common/ShoppingCartForm/ShoppingCartForm';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getAllCart,
-  getCart,
-  removeAllCart,
   removeFromCart,
 } from '../../../redux/cartSlice';
 import { Link } from 'react-router-dom';
@@ -29,10 +25,13 @@ const Order = () => {
   const totalPrice = getTotalPrice(cart.cartItems);
   const shipping = 4.99;
 
-  const handleRemoveAll = () => {
-    dispatch(removeAllCart());
-  };
+const [comment, setComment] = useState()
 
+useEffect(() => {
+  const commentInOrder = JSON.parse(localStorage.getItem("commentToOrder"));
+  setComment(commentInOrder)
+},[])
+ 
   return (
     <div className="h-auto bg-gray-100 py-20">
       <h1 className="mb-10 text-center text-2xl font-bold">Order</h1>
@@ -58,12 +57,16 @@ const Order = () => {
               ))}
             </div>
           )}
-        </div>
+           <div className="flex flex-col justify-start mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
+                <p className='text-xs font-medium'>Comment:</p>
+                <p className='italic text-xs'>{comment}</p>
+           </div>
+        </div>  
         <div className='flex flex-col md:w-2/3'>
           {' '}
           <div className="mt-6 mb-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-full">
            
-            
+            <ShoppingCartForm />
           </div>
           <div className="mt-6 mb-6 h-auto rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-full">
             <div className="flex justify-between">

@@ -6,11 +6,7 @@ import {
   addItem,
   addToCart,
 } from '../../../redux/cartSlice';
-import {
-  getAllProducts,
-  getItemById,
-  getProductById,
-} from '../../../redux/productsSlice';
+import { getProductById } from '../../../redux/productsSlice';
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -23,11 +19,11 @@ const SingleProduct = () => {
   const [color, setColor] = useState('');
   const [size, setSize] = useState('');
   const [quantity, setQuantity] = useState(1);
-  const [products, setProducts] = useState([]);
+  const [comment, setComment] = useState('')
 
   const handleSubmit = (props) => {
     dispatch(addToCart(props));
-    navigate('/shoppingcart')
+    navigate('/shoppingcart');
   };
   return (
     <>

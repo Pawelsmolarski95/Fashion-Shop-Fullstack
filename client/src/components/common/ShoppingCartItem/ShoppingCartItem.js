@@ -11,11 +11,10 @@ const ShoppingCartItem = ({
   handleDecrease,
   handleIncrease,
   id,
+  color,
 }) => {
   const [totalPrice, setTotalPrice] = useState();
-  const [text, setText] = useState('');
 
-  console.log(quantity);
   useEffect(() => {
     const total = Math.floor(quantity * price * 100) / 100;
     const roundedTotal = total.toFixed(2);
@@ -23,6 +22,12 @@ const ShoppingCartItem = ({
     setTotalPrice(roundedTotal);
   }, []);
 
+  const [comment, setComment] = useState('');
+
+  const handleChangeComment = (value) => {
+    
+    setComment(value)
+  }
   return (
     <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
       <img
@@ -31,16 +36,10 @@ const ShoppingCartItem = ({
         className="w-full rounded-lg sm:w-40"
       />
       <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-        <div className="mt-5 sm:mt-0">
+        <div className="mt-5 sm:mt-0 flex flex-col justify-between">
           <h2 className="text-lg font-bold text-gray-900">{name}</h2>
           <p className="mt-1 text-xs text-gray-700">Size: {size}</p>
-          <p className="mt-1 text-xs text-gray-700">Comment: </p>
-          <textarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            className="w-full p-1 rounded-md border-2 placeholder-gray-200::placeholder text-xs"
-            placeholder="Here you can write more details about order"
-          />
+          <p className="mt-1 text-xs text-gray-700">Color: {color}</p>
         </div>
         <div className="mt-4 flex flex-col relative justify-center sm:space-y-6 sm:mt-0 sm:block sm:space-x-2">
           <button
@@ -51,7 +50,7 @@ const ShoppingCartItem = ({
           </button>
           <div className="flex items-center border-gray-100">
             <button onClick={() => handleDecrease(id)}>
-              <span className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
+              <span className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-[#4f46e5] hover:text-blue-50">
                 {' '}
                 -{' '}
               </span>
@@ -64,14 +63,14 @@ const ShoppingCartItem = ({
               min="1"
             />
             <button onClick={() => handleIncrease(id)}>
-              <span className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
+              <span className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-[#4f46e5] hover:text-blue-50">
                 {' '}
                 +{' '}
               </span>
             </button>
           </div>
           <div className="flex items-center space-x-1">
-            <p className="text-sm">Price: {price}$</p>
+            <p className="text-md font-bold">Price: {price}$</p>
           </div>
         </div>
       </div>

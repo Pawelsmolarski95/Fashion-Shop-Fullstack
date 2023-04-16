@@ -19,8 +19,8 @@ model User {
   id       String    @id @default(uuid())
   email    String    @unique
   password Password?
-  order    Order?
-  role     Role      @default(USER)
+
+  role Role @default(USER)
 }
 
 model Password {
@@ -30,20 +30,47 @@ model Password {
   userId         String @unique
 }
 
+
+
+
+model Address {
+  id        String @id @default(uuid())
+  street    String
+  city      String
+  state     String
+  zip       String
+  country   String
+  email     String
+  firstName String
+  lastName  String
+  order     Order  @relation(fields: [orderId], references: [id])
+  orderId   String
+}
+
 model Order {
-  id     String @id @default(uuid())
-  userId String @unique
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id      String         @id @default(uuid())
+  product ProductOrder[]
 
-  productId String?
-  product   Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
-
-  adress String
+  address Address[]
   comment String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model ProductOrder {
+  id       String @unique
+  name     String
+  color    String
+  size     String
+  quantity Int
+  price    Int
+  order    Order  @relation(fields: [orderId], references: [id])
+  orderId  String
+}
+
+
+
 
 model Image {
   id       String @id @default(uuid())
@@ -66,5 +93,4 @@ model Product {
   rating      Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  orders      Order[]
 }

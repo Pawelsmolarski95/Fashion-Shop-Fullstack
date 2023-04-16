@@ -1,4 +1,4 @@
-const ShoppingCartForm = () => {
+const ShoppingCartForm = ({ adress, setAdress, handleChange }) => {
   return (
     <div className=" pb-12">
       <h2 className="text-base font-semibold leading-4 text-gray-900">
@@ -16,8 +16,10 @@ const ShoppingCartForm = () => {
           <div className="mt-2">
             <input
               type="text"
-              name="first-name"
+              name="firstName"
               id="first-name"
+              value={adress.firstName}
+              onChange={handleChange}
               autoComplete="given-name"
               className="block pl-1 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
@@ -34,7 +36,9 @@ const ShoppingCartForm = () => {
           <div className="mt-2">
             <input
               type="text"
-              name="last-name"
+              name="lastName"
+              value={adress.lastName}
+              onChange={handleChange}
               id="last-name"
               autoComplete="family-name"
               className="pl-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -53,6 +57,8 @@ const ShoppingCartForm = () => {
             <input
               id="email"
               name="email"
+              value={adress.email}
+              onChange={handleChange}
               type="email"
               autoComplete="email"
               className="pl-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -71,6 +77,8 @@ const ShoppingCartForm = () => {
             <input
               type="text"
               name="country"
+              value={adress.country}
+              onChange={handleChange}
               id="country"
               autoComplete="country"
               className=" pl-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -88,7 +96,9 @@ const ShoppingCartForm = () => {
           <div className="mt-2">
             <input
               type="text"
-              name="street-address"
+              name="street"
+              value={adress.street}
+              onChange={handleChange}
               id="street-address"
               autoComplete="street-address"
               className=" pl-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -107,6 +117,8 @@ const ShoppingCartForm = () => {
             <input
               type="text"
               name="city"
+              value={adress.city}
+              onChange={handleChange}
               id="city"
               autoComplete="address-level2"
               className="pl-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -124,7 +136,9 @@ const ShoppingCartForm = () => {
           <div className="mt-2">
             <input
               type="text"
-              name="region"
+              name="state"
+              value={adress.state}
+              onChange={handleChange}
               id="region"
               autoComplete="address-level1"
               className=" pl-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -142,7 +156,9 @@ const ShoppingCartForm = () => {
           <div className="mt-2">
             <input
               type="text"
-              name="postal-code"
+              name="zip"
+              value={adress.zip}
+              onChange={handleChange}
               id="postal-code"
               autoComplete="postal-code"
               className=" pl-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

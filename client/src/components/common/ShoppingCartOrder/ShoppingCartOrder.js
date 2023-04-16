@@ -6,6 +6,7 @@ const ShoppingCartOrder = ({
   quantity,
   price,
   id,
+  color
 }) => {
   const [totalPrice, setTotalPrice] = useState();
 
@@ -24,13 +25,14 @@ const ShoppingCartOrder = ({
         alt="product-image"
         className="w-full rounded-lg sm:w-[100px] sm:h-[100px]"
       />
-      <div className="sm:ml-3 sm:flex sm:w-full gap-3 ">
+      <div className="sm:ml-3 sm:flex flex-col sm:w-full gap-1 ">
         <div className="mt-5 flex flex-col justify-around sm:mt-0">
           <h2 className="text-xs font-bold text-gray-900">{name}</h2>
         </div>
-        <div className=" flex flex-col justify-around">
-          <p className="mt-1 text-xs">Size: {size}</p>
-          <p className="text-xs">Quantity:{quantity}</p>
+        <div className=" flex flex-col gap-1 justify-around">
+          <p className="mt-1 text-xs font-">Size: {size}</p>
+          <p className="text-xs">Quantity: {quantity}</p>
+          <p className="text-xs">Color: {color}</p>
 
           <p className="text-xs">Price: {price}$</p>
         </div>

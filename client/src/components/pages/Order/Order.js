@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import ShoppingCartForm from '../../common/ShoppingCartForm/ShoppingCartForm';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  removeFromCart,
-} from '../../../redux/cartSlice';
+import { removeFromCart } from '../../../redux/cartSlice';
 import { Link } from 'react-router-dom';
 import ShoppingCartOrder from '../../common/ShoppingCartOrder/ShoppingCartOrder';
 
@@ -25,13 +23,32 @@ const Order = () => {
   const totalPrice = getTotalPrice(cart.cartItems);
   const shipping = 4.99;
 
-const [comment, setComment] = useState()
+  const [comment, setComment] = useState();
 
-useEffect(() => {
-  const commentInOrder = JSON.parse(localStorage.getItem("commentToOrder"));
-  setComment(commentInOrder)
-},[])
- 
+  const [adress, setAdress] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    country: '',
+    city: '',
+    street: '',
+    state: '',
+    zip: '',
+  });
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setAdress((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  }
+
+  useEffect(() => {
+    const commentInOrder = JSON.parse(localStorage.getItem('commentToOrder'));
+    setComment(commentInOrder);
+  }, []);
+
   return (
     <div className="h-auto bg-gray-100 py-20">
       <h1 className="mb-10 text-center text-2xl font-bold">Order</h1>
@@ -51,22 +68,26 @@ useEffect(() => {
                   quantity={item.quantity}
                   price={item.price * item.quantity}
                   size={item.size}
+                  color={item.color}
                   handleRemoveFromCart={handleRemoveFromCart}
                   item={item}
                 />
               ))}
             </div>
           )}
-           <div className="flex flex-col justify-start mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
-                <p className='text-xs font-medium'>Comment:</p>
-                <p className='italic text-xs'>{comment}</p>
-           </div>
-        </div>  
-        <div className='flex flex-col md:w-2/3'>
+          <div className="flex flex-col justify-start mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
+            <p className="text-xs font-medium">Comment:</p>
+            <p className="italic text-xs">{comment}</p>
+          </div>
+        </div>
+        <div className="flex flex-col md:w-2/3">
           {' '}
           <div className="mt-6 mb-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-full">
-           
-            <ShoppingCartForm />
+            <ShoppingCartForm
+              adress={adress}
+              setAdress={setAdress}
+              handleChange={handleChange}
+            />
           </div>
           <div className="mt-6 mb-6 h-auto rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-full">
             <div className="flex justify-between">
@@ -77,12 +98,11 @@ useEffect(() => {
                 </p>
               </div>
             </div>
-            <div className='flex '>
-                <button className="mt-6 m-auto text-center w-[60%] rounded-md bg-[#4f46e5] py-1.5 font-medium text-blue-50">
-              Order
-            </button>
+            <div className="flex ">
+              <button className="mt-6 m-auto text-center w-[60%] rounded-md bg-[#4f46e5] py-1.5 font-medium text-blue-50">
+                Order
+              </button>
             </div>
-            
           </div>
         </div>
       </div>

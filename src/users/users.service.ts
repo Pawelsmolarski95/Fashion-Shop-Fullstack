@@ -10,7 +10,7 @@ export class UsersService {
     return this.prismaService.user.findMany({
       include: {
         password: true,
-        order: true,
+        
       },
     });
   }

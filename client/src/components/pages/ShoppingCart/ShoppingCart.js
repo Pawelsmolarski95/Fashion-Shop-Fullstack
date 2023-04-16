@@ -11,11 +11,10 @@ import {
 } from '../../../redux/cartSlice';
 import { Link } from 'react-router-dom';
 
-
 const ShoppingCart = () => {
   const cart = useSelector((state) => state.cart);
 
-  const [comment, setComment] = useState('')
+  const [comment, setComment] = useState('');
   console.log(cart);
   const dispatch = useDispatch();
   function getTotalPrice(cartItems) {
@@ -45,8 +44,8 @@ const ShoppingCart = () => {
   };
   const handlePrepareToOrder = () => {
     console.log(comment);
-    localStorage.setItem("commentToOrder", JSON.stringify(comment))
-  }
+    localStorage.setItem('commentToOrder', JSON.stringify(comment));
+  };
 
   return (
     <div className="h-auto bg-gray-100 pt-20">
@@ -78,12 +77,14 @@ const ShoppingCart = () => {
         </div>
         <div className="flex flex-col md:w-[40%]">
           <div className="mt-6 mb-6 h-full rounded-lg  bg-white p-6 shadow-md md:mt-0 ">
-          <p className="text-gray-700 mb-1">Here you can more details about your order</p>
-          <hr className="my-4" />
+            <p className="text-gray-700 mb-1 text-[14px]">
+              Here you can add more details about your order
+            </p>
+            <hr className="my-4" />
             <textarea
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              className='border p-1 border-[#e5e7eb] w-full h-auto rounded-lg '
+              className="border p-1 border-[#e5e7eb] w-full h-auto rounded-lg "
             />
           </div>
 
@@ -107,7 +108,10 @@ const ShoppingCart = () => {
               </div>
             </div>
             <Link to={'/order'}>
-              <button onClick={() => handlePrepareToOrder(comment)} className="mt-6 w-full rounded-md bg-[#4f46e5] py-1.5 font-medium text-blue-50">
+              <button
+                onClick={() => handlePrepareToOrder(comment)}
+                className="mt-6 w-full rounded-md bg-[#4f46e5] py-1.5 font-medium text-blue-50"
+              >
                 Checkout
               </button>
             </Link>

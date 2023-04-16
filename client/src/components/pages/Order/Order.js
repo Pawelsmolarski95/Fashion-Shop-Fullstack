@@ -2,13 +2,18 @@ import { useEffect, useState } from 'react';
 import ShoppingCartForm from '../../common/ShoppingCartForm/ShoppingCartForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart } from '../../../redux/cartSlice';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ShoppingCartOrder from '../../common/ShoppingCartOrder/ShoppingCartOrder';
+import { addOrder } from '../../../redux/orderSlice';
 
 const Order = () => {
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
+  console.log(cart.cartItems);
+
+  const cartToOrder = cart.cartItems;
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   function getTotalPrice(cartItems) {
     const totalPrice = cartItems.reduce((accumulator, item) => {
       return accumulator + item.price * item.quantity;
@@ -48,6 +53,12 @@ const Order = () => {
     const commentInOrder = JSON.parse(localStorage.getItem('commentToOrder'));
     setComment(commentInOrder);
   }, []);
+
+  const handleSentOrder = (props) => {
+    dispatch(addOrder(props));
+    localStorage.clear();
+    navigate('/');
+  };
 
   return (
     <div className="h-auto bg-gray-100 py-20">
@@ -99,7 +110,16 @@ const Order = () => {
               </div>
             </div>
             <div className="flex ">
-              <button className="mt-6 m-auto text-center w-[60%] rounded-md bg-[#4f46e5] py-1.5 font-medium text-blue-50">
+              <button
+                onClick={() =>
+                  handleSentOrder({
+                    products: cartToOrder,
+                    address: adress,
+                    comment: comment,
+                  })
+                }
+                className="mt-6 m-auto text-center w-[60%] rounded-md bg-[#4f46e5] py-1.5 font-medium text-blue-50"
+              >
                 Order
               </button>
             </div>

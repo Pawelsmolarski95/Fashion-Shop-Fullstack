@@ -1,22 +1,20 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addLoginRequest } from "../../../redux/userRedux";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../../redux/userSlice';
+import axios from 'axios';
 
 const Login = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleLogin = (props) => {
+    const userLogin = props
+    const response = axios.post('http://localhost:3000/api/auth/login', userLogin)
+    
+    sessionStorage.setItem('user', JSON.stringify(response.data))
+  };
 
-  const handleSubmit = () => {
-    const user = {
-      email: email,
-      password: password
-    }
-    dispatch(addLoginRequest(user))
-  }
-
- 
   return (
     <>
       <section className="bg-gray-50 dark:bg-gray-900">
@@ -27,7 +25,7 @@ const Login = () => {
                 Sign in to your account
               </h1>
               <form
-                onSubmit={handleSubmit}
+                // onSubmit={handleSubmit}
                 className="space-y-4 md:space-y-6"
                 action="#"
               >
@@ -95,7 +93,12 @@ const Login = () => {
                   </a>
                 </div>
                 <div className="flex justify-start">
-                  <button className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3  font-medium text-white hover:bg-indigo-700">
+                  <button
+                    onClick={() =>
+                      handleLogin({ email: email, password: password })
+                    }
+                    className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3  font-medium text-white hover:bg-indigo-700"
+                  >
                     Sign In
                   </button>
                 </div>

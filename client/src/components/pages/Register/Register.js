@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addRegistrationRequest } from '../../../redux/userRedux';
+import { register, registerUser } from '../../../redux/userSlice';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -9,17 +9,16 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
 
-  const handleSubmit = () => {
-    if (email && password === passwordRepeat) {
-      const user = {
-        email: email,
-        password: password,
-        passwordRepeat: passwordRepeat,
-      };
-      console.log(user)
-      dispatch(addRegistrationRequest(user));
+
+
+  const handleRegistration = (email, password, passwordRepeat) => {
+    if (email) {
+      if (password === passwordRepeat) {
+        dispatch(registerUser({email: email, password: password, passwordRepeat: passwordRepeat}));
+      }
     }
   };
+ 
 
   return (
     <>
@@ -30,11 +29,7 @@ const Register = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Create and account
               </h1>
-              <form
-                onSubmit={handleSubmit}
-                className="space-y-4 md:space-y-6"
-                action="#"
-              >
+              <form className="space-y-4 md:space-y-6"  >
                 <div>
                   <label
                     for="email"
@@ -88,7 +83,11 @@ const Register = () => {
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required="true"
                   />
-                  { password !== passwordRepeat ? <small className='text-[white]'>Your passwords are not the same</small> : null }
+                  {password !== passwordRepeat ? (
+                    <small className="text-[white]">
+                      Your passwords are not the same
+                    </small>
+                  ) : null}
                 </div>
                 <div className="flex items-start">
                   <div className="flex items-center h-5">
@@ -117,8 +116,8 @@ const Register = () => {
                 </div>
                 <div className="flex justify-start">
                   <button
-                    href="/products"
-                    onSubmit={handleSubmit}
+                    
+                    onClick={() => handleRegistration(email, password, passwordRepeat)}
                     className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3  font-medium text-white hover:bg-indigo-700"
                   >
                     Create an account

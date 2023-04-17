@@ -7,6 +7,7 @@ import {
   addToCart,
 } from '../../../redux/cartSlice';
 import { getProductById } from '../../../redux/productsSlice';
+import { IMGS_URL } from '../../../config';
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -19,7 +20,7 @@ const SingleProduct = () => {
   const [color, setColor] = useState('');
   const [size, setSize] = useState('');
   const [quantity, setQuantity] = useState(1);
-  const [comment, setComment] = useState('')
+  const [comment, setComment] = useState('');
 
   const handleSubmit = (props) => {
     dispatch(addToCart(props));
@@ -69,24 +70,24 @@ const SingleProduct = () => {
             </nav>
 
             <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-              <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
+              <div className="h-[700px] aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
                 <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg"
+                  src={`${IMGS_URL}/uploads/${product.image[0].fileName}`}
                   alt="Two each of gray, white, and black shirts laying flat."
                   className="h-full w-full object-cover object-center"
                 />
               </div>
               <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-                <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
+                <div className="h-[334px] aspect-w-3 overflow-hidden rounded-lg">
                   <img
-                    src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg"
+                    src={`${IMGS_URL}/uploads/${product.image[1].fileName}`}
                     alt="Model wearing plain black basic tee."
                     className="h-full w-full object-cover object-center"
                   />
                 </div>
-                <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
+                <div className="h-[334px] aspect-w-3 overflow-hidden rounded-lg">
                   <img
-                    src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg"
+                    src={`${IMGS_URL}/uploads/${product.image[2].fileName}`}
                     alt="Model wearing plain gray basic tee."
                     className="h-full w-full object-cover object-center"
                   />
@@ -94,7 +95,7 @@ const SingleProduct = () => {
               </div>
               <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
                 <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg"
+                  src={`${IMGS_URL}/uploads/${product.image[3].fileName}`}
                   alt="Model wearing plain white basic tee."
                   className="h-full w-full object-cover object-center"
                 />
@@ -104,7 +105,7 @@ const SingleProduct = () => {
             <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
               <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
                 <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                  Basic Tee 6-Pack
+                  {product.name}
                 </h1>
               </div>
 
@@ -645,7 +646,7 @@ const SingleProduct = () => {
                       </button>
                     </div>
                   </div>
-                  {/* <Link to={'/shopingcart'}> */}
+
                   <button
                     onClick={() =>
                       handleSubmit({
@@ -655,13 +656,13 @@ const SingleProduct = () => {
                         size: size,
                         price: product.price,
                         color: color,
+                        image: product.image[0].fileName,
                       })
                     }
                     className=" flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
                     Add to bag
                   </button>
-                  {/* </Link> */}
                 </form>
               </div>
 

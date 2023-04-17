@@ -26,9 +26,9 @@ import { join } from 'path';
     AuthModule,
     PrismaModule,
     PassportModule,
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({  isGlobal: true }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'public'),
+      rootPath: join(__dirname, '../../', 'client', ),
     }),
   ],
   controllers: [AppController],

@@ -1,3 +1,4 @@
+import { IMGS_URL } from "../../../config";
 
 
 const Banner = () => {
@@ -24,38 +25,15 @@ const Banner = () => {
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
                         <img
-                          src="https://images.pexels.com/photos/949670/pexels-photo-949670.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                          alt=""
+                          src={`${IMGS_URL}/uploads/banner_1.webp`}
+                          alt="fashion"
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="https://images.pexels.com/photos/3317434/pexels-photo-3317434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                    </div>
-                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="https://images.pexels.com/photos/2881785/pexels-photo-2881785.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="https://images.pexels.com/photos/2820575/pexels-photo-2820575.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="https://images.pexels.com/photos/2772535/pexels-photo-2772535.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                          alt=""
+                          src={`${IMGS_URL}/uploads/banner_2.webp`}
+                          alt="fashion"
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
@@ -63,15 +41,38 @@ const Banner = () => {
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="https://images.pexels.com/photos/9154696/pexels-photo-9154696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                          alt=""
+                           src={`${IMGS_URL}/uploads/banner_3.webp`}
+                           alt="fashion"
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="https://images.pexels.com/photos/1018911/pexels-photo-1018911.jpeg?auto=compress&cs=tinysrgb&w=800"
-                          alt=""
+                          src={`${IMGS_URL}/uploads/banner_4.webp`}
+                          alt="fashion"
+                          className="h-full w-full object-cover object-center"
+                        />
+                      </div>
+                      <div className="h-64 w-44 overflow-hidden rounded-lg">
+                        <img
+                         src={`${IMGS_URL}/uploads/banner_5.webp`}
+                         alt="fashion"
+                          className="h-full w-full object-cover object-center"
+                        />
+                      </div>
+                    </div>
+                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                      <div className="h-64 w-44 overflow-hidden rounded-lg">
+                        <img
+                          src={`${IMGS_URL}/uploads/banner_6.jpeg`}
+                          alt="fashion"
+                          className="h-full w-full object-cover object-center"
+                        />
+                      </div>
+                      <div className="h-64 w-44 overflow-hidden rounded-lg">
+                        <img
+                          src={`${IMGS_URL}/uploads/banner_7.jpeg`}
+                          alt="fashion"
                           className="h-full w-full object-cover object-center"
                         />
                       </div>

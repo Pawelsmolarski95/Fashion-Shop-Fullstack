@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { IMGS_URL } from '../../../config';
 
 const ShoppingCartOrder = ({
   size,
@@ -6,7 +7,8 @@ const ShoppingCartOrder = ({
   quantity,
   price,
   id,
-  color
+  color,
+  image
 }) => {
   const [totalPrice, setTotalPrice] = useState();
 
@@ -21,9 +23,9 @@ const ShoppingCartOrder = ({
   return (
     <div className=" inline-block mb-6 rounded-lg bg-white p-3 shadow-md sm:flex sm:justify-start">
       <img
-        src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        src={`${IMGS_URL}/uploads/${image}`}
         alt="product-image"
-        className="w-full rounded-lg sm:w-[100px] sm:h-[100px]"
+        className="w-full rounded-lg object-cover sm:w-[140px] sm:h-[100px]"
       />
       <div className="sm:ml-3 sm:flex flex-col sm:w-full gap-1 ">
         <div className="mt-5 flex flex-col justify-around sm:mt-0">

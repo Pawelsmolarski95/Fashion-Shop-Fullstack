@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { IMGS_URL } from '../../../config';
 
 const Categories = () => {
   return (
@@ -12,7 +13,7 @@ const Categories = () => {
               <div className="group relative">
                 <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                   <img
-                    src="https://images.pexels.com/photos/4966995/pexels-photo-4966995.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    src={`${IMGS_URL}/uploads/category_women.jpeg`}
                     alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
                     className="h-full w-full object-cover object-center"
                   />
@@ -31,7 +32,7 @@ const Categories = () => {
               <div className="group relative">
                 <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                   <img
-                    src="https://images.pexels.com/photos/840916/pexels-photo-840916.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    src={`${IMGS_URL}/uploads/category_men.jpeg`}
                     alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant."
                     className="h-full w-full object-cover object-center"
                   />
@@ -50,7 +51,7 @@ const Categories = () => {
               <div className="group relative">
                 <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                   <img
-                    src="https://images.pexels.com/photos/264591/pexels-photo-264591.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    src={`${IMGS_URL}/uploads/category_accesories.jpeg`}
                     alt="Collection of four insulated travel bottles on wooden shelf."
                     className="h-full w-full object-cover object-center"
                   />

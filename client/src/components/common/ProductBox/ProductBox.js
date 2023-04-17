@@ -1,14 +1,15 @@
+import { IMGS_URL } from "../../../config";
 
 
-const ProductBox = ({ name,price,id } ) => {
+const ProductBox = ({ name,price,id,image } ) => {
 
   return (
     <a href={"/product/"+ `${id}`} className="group">
       <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
         <img
-          src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
+          src={`${IMGS_URL}/uploads/${image}`}
           alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
-          className="h-full w-full object-cover object-center group-hover:opacity-75"
+          className="h-[300px] w-full object-cover object-center group-hover:opacity-75"
         />
       </div>
       <h3 className="mt-4 text-sm text-gray-700">{name}</h3>

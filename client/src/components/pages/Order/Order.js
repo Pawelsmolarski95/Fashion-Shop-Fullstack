@@ -8,7 +8,7 @@ import { addOrder } from '../../../redux/orderSlice';
 
 const Order = () => {
   const cart = useSelector((state) => state.cart);
-  console.log(cart.cartItems);
+ 
 
   const cartToOrder = cart.cartItems;
 
@@ -82,6 +82,7 @@ const Order = () => {
                   color={item.color}
                   handleRemoveFromCart={handleRemoveFromCart}
                   item={item}
+                  image={item.image}
                 />
               ))}
             </div>

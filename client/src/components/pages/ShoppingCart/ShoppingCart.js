@@ -14,19 +14,20 @@ import { Link } from 'react-router-dom';
 const ShoppingCart = () => {
   const cart = useSelector((state) => state.cart);
 
-  const [comment, setComment] = useState('');
   console.log(cart);
+  const [comment, setComment] = useState('');
+
   const dispatch = useDispatch();
+
   function getTotalPrice(cartItems) {
     const totalPrice = cartItems.reduce((accumulator, item) => {
       return accumulator + item.price * item.quantity;
     }, 0);
     return totalPrice;
   }
+
   const totalPrice = getTotalPrice(cart.cartItems);
   const shipping = 4.99;
-
-  console.log(comment);
 
   const handleRemoveFromCart = (id) => {
     dispatch(removeFromCart(id));
@@ -43,7 +44,6 @@ const ShoppingCart = () => {
     dispatch(increaseCart(id));
   };
   const handlePrepareToOrder = () => {
-    console.log(comment);
     localStorage.setItem('commentToOrder', JSON.stringify(comment));
   };
 
@@ -67,6 +67,7 @@ const ShoppingCart = () => {
                   price={item.price * item.quantity}
                   size={item.size}
                   color={item.color}
+                  image={item.image}
                   handleRemoveFromCart={handleRemoveFromCart}
                   handleDecrease={handleDecrease}
                   handleIncrease={handleIncrease}

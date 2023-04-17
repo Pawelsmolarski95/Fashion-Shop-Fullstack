@@ -1,3 +1,5 @@
+import { IMGS_URL } from '../../../config';
+
 const Blog = () => {
   return (
     <>
@@ -52,9 +54,9 @@ const Blog = () => {
                     </div>
                   </div>
                   <img
-                    src="https://i.ibb.co/DYxtCJq/img-1.png"
-                    className="w-full"
-                    alt="chair"
+                    src={`${IMGS_URL}/uploads/blog_1.jpeg`}
+                    alt="blog"
+                    className="w-full h-[250px] object-cover"
                   />
                 </div>
                 <div className="sm:w-1/2 sm:mt-0 mt-4 relative">
@@ -93,9 +95,9 @@ const Blog = () => {
                     </div>
                   </div>
                   <img
-                    src="https://i.ibb.co/3C5HvxC/img-2.png"
-                    className="w-full"
-                    alt="wall design"
+                   src={`${IMGS_URL}/uploads/blog_3.jpeg`}
+                   alt="blog"
+                    className="w-full h-[250px] object-cover"
                   />
                 </div>
               </div>
@@ -135,14 +137,14 @@ const Blog = () => {
                   </div>
                 </div>
                 <img
-                  src="https://i.ibb.co/Ms4qyXp/img-3.png"
-                  alt="sitting place"
-                  className="w-full mt-8 md:mt-6 hidden sm:block"
+                  src={`${IMGS_URL}/uploads/blog_4.jpeg`}
+                  alt="blog"
+                  className="w-full h-[543px] object-cover mt-8 md:mt-6 hidden sm:block"
                 />
                 <img
                   className="w-full mt-4 sm:hidden"
-                  src="https://i.ibb.co/6XYbN7f/Rectangle-29.png"
-                  alt="sitting place"
+                  src={`${IMGS_URL}/uploads/blog_5.jpeg`}
+                  alt="blog"
                 />
               </div>
             </div>
@@ -183,9 +185,9 @@ const Blog = () => {
                   </div>
                 </div>
                 <img
-                  src="https://i.ibb.co/6Wfjf2w/img-4.png"
-                  alt="sitting place"
-                  className="w-full sm:block hidden"
+                     src={`${IMGS_URL}/uploads/blog_7.jpeg`}
+                     alt="blog"
+                  className="w-full h-[543px] object-cover sm:block hidden"
                 />
                 <img
                   className="w-full sm:hidden"
@@ -232,11 +234,11 @@ const Blog = () => {
                   </div>
                   <img
                     src="https://i.ibb.co/3yvZBpm/img-5.png"
-                    className="w-full"
+                    className="w-full h-[250px]"
                     alt="chair"
                   />
                 </div>
-                <div className="relative w-full sm:mt-0 mt-4">
+                <div className="relative  w-full sm:mt-0 mt-4">
                   <div>
                     <p className="p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">
                       22 January 2023
@@ -249,7 +251,7 @@ const Blog = () => {
                         How to Create a Fashionable and Unique Look That Defines
                         You
                       </p>
-                      <div className="flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
+                      <div className="flex items-center mt-4 cursor-pointer text-white hover:text-gray-400 hover:underline">
                         <p className="pr-2 text-sm font-medium leading-none">
                           Read More
                         </p>
@@ -273,9 +275,9 @@ const Blog = () => {
                     </div>
                   </div>
                   <img
-                    src="https://i.ibb.co/gDdnJb5/img-6.png"
-                    className="w-full"
-                    alt="wall design"
+                    src={`${IMGS_URL}/uploads/blog_9.jpeg`}
+                    alt="blog"
+                    className="w-full h-[250px]  object-cover"
                   />
                 </div>
               </div>

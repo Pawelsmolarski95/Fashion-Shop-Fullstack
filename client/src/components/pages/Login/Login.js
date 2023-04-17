@@ -8,8 +8,10 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = (props) => {
-    const userLogin = props
+  const handleLogin = ({ email, password }) => {
+
+    const userLogin = { email:email, password:password }
+    console.log(userLogin)
     const response = axios.post('http://localhost:3000/api/auth/login', userLogin)
     
     sessionStorage.setItem('user', JSON.stringify(response.data))

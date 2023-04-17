@@ -346,6 +346,7 @@ const MainProducts = ({ products }) => {
                             id={product.id}
                             name={product.name}
                             price={product.price}
+                            image={product.image[2].fileName}
                           />
                         ))
                       ) : (
@@ -353,6 +354,7 @@ const MainProducts = ({ products }) => {
                           id={products.id}
                           name={products.name}
                           price={products.price}
+                          image={products.image[2].fileName}
                         />
                       )}
                     </div>

@@ -1,4 +1,5 @@
-import logo from './logo.png';
+import { IMGS_URL } from '../../../config';
+
 
 const Footer = () => {
   return (
@@ -7,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
             <a href="/">
-              <img src={logo} alt="logo" width={100} height={150} />
+              <img src={`${IMGS_URL}/uploads/logo.png`} alt="logo" width={100} height={150} />
             </a>
             <p className="max-w-xs mt-4 text-sm text-gray-600">
               Carefully selected suppliers, high quality material, friendly and

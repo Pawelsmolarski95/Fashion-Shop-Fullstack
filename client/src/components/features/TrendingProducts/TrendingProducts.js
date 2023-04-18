@@ -3,9 +3,7 @@ import ProductBox from '../../common/ProductBox/ProductBox';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { useEffect } from 'react';
 import {
-
   getMostTrending,
-
 } from '../../../redux/productsSlice';
 
 const TrendingProducts = () => {

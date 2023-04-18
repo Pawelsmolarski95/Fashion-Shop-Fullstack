@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { decreaseCart } from '../../../redux/cartSlice';
 import { IMGS_URL } from '../../../config';
 
 const ShoppingCartItem = ({
@@ -13,7 +11,7 @@ const ShoppingCartItem = ({
   handleIncrease,
   id,
   color,
-  image
+  image,
 }) => {
   const [totalPrice, setTotalPrice] = useState();
 
@@ -27,9 +25,8 @@ const ShoppingCartItem = ({
   const [comment, setComment] = useState('');
 
   const handleChangeComment = (value) => {
-    
-    setComment(value)
-  }
+    setComment(value);
+  };
   return (
     <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
       <img

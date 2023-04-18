@@ -1,9 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import {  useNavigate, useParams } from 'react-router-dom';
+import {  useState } from 'react';
 import {
-  addCartProductRequest,
-  addItem,
   addToCart,
 } from '../../../redux/cartSlice';
 import { getProductById } from '../../../redux/productsSlice';

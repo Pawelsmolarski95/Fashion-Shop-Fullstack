@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { API_URL } from '../config';
 
 
 const initialState = {
@@ -15,7 +16,7 @@ const userSlice = createSlice({
         const registerUser = action.payload;
 
         const response = axios.post(
-          'http://localhost:3000/api/auth/register',
+          `${API_URL}/auth/register`,
           registerUser,
         );
         console.log(response.data)
@@ -26,7 +27,7 @@ const userSlice = createSlice({
     loginUser(state,action) {
         const userLogin = action.payload
 
-        const response = axios.post('http://localhost:3000/api/auth/login', userLogin)
+        const response = axios.post(`${API_URL}/auth/login`, userLogin)
         state.userLogged.push(response.data)
         sessionStorage.setItem('user', JSON.stringify(state.userLogged))
 

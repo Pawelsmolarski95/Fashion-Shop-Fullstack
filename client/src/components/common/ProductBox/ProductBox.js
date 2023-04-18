@@ -9,7 +9,7 @@ const ProductBox = ({ name,price,id,image } ) => {
         <img
           src={`${IMGS_URL}/uploads/${image}`}
           alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
-          className="h-[300px] w-full object-cover object-center group-hover:opacity-75"
+          className="h-[200px] w-full object-cover object-center group-hover:opacity-75"
         />
       </div>
       <h3 className="mt-4 text-sm text-gray-700">{name}</h3>

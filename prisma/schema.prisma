@@ -58,16 +58,6 @@ model Order {
   updatedAt DateTime @updatedAt
 }
 
-// model ProductOrder {
-//   id       String @unique
-//   name     String
-//   color    String
-//   size     String
-//   quantity Int
-//   price    Int
-//   order    Order  @relation(fields: [orderId], references: [id])
-//   orderId  String
-// }
 
 
 

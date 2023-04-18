@@ -1,14 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { BiUser } from 'react-icons/bi';
-
-import { SlArrowDown } from 'react-icons/sl';
+import React, {  useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai';
 import { Popover } from '@headlessui/react';
-import logo from './logo.png';
 import { ShoppingBagIcon, User, UserIcon } from '@heroicons/react/24/outline';
-import ShoppingCart from '../../pages/ShoppingCart/ShoppingCart';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { IMGS_URL } from '../../../config';
 
 const NavBar = ({ cart }) => {
@@ -107,7 +101,7 @@ const NavBar = ({ cart }) => {
         <div className=" shadow-lg   ring-opacity-5  pt-6 divide-gray-50 text-gray-900 ">
           <div className="pt-1 pb-5 px-5">
             <div className="flex items-center justify-between">
-              <img src={logo} alt="logo" width={170} height={130} />
+              <img  src={`${IMGS_URL}/uploads/logo.png`} alt="logo" width={170} height={130} />
               <div className="-mr-2">
                 <Popover.Button className="absolute top-3 right-6 gap-2 rounded-md bg-[#f3f4f6] p-2 text-[#3E5151]">
                   <span className="sr-only">Close menu</span>

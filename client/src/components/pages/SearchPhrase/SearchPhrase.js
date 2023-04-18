@@ -9,12 +9,12 @@ const SearchPhrase = () => {
   const { phrase } = useParams();
 
   const dispatch = useDispatch();
-  const productBySearchPhrase = useSelector(getProductBySearchPhrase);
+  const productBySearchPhrase = useSelector(state => getProductBySearchPhrase(state, phrase));
 
 
-  useEffect(() => {
-    dispatch(loadSearchedProductsRequest(phrase));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(loadSearchedProductsRequest(phrase));
+  // }, [dispatch]);
   
   return (
     <div>

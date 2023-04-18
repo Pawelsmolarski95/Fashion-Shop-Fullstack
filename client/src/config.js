@@ -1,6 +1,9 @@
 export const IMGS_URL =
-'http://localhost:3000/public';
+'https://fashion-e-commerce.onrender.com/public';
 
 
     export const API_URL =
-  process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000/api';
+  process.env.NODE_ENV === 'https://fashion-e-commerce.onrender.com/api';
+
+
+ 

@@ -28,7 +28,7 @@ import { join } from 'path';
     PassportModule,
     ConfigModule.forRoot({  isGlobal: true }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '../../', 'client', ),
+      rootPath: join(__dirname, '../../', 'client', 'build'),
     }),
   ],
   controllers: [AppController],

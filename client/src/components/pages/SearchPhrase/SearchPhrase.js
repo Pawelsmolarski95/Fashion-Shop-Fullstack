@@ -1,8 +1,7 @@
 import { useParams } from 'react-router-dom';
 import MainProducts from '../MainProducts/MainProducts';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getProductBySearchPhrase, loadSearchedProductsRequest } from '../../../redux/productsSlice';
+import { getProductBySearchPhrase } from '../../../redux/productsSlice';
 
 
 const SearchPhrase = () => {
@@ -11,11 +10,6 @@ const SearchPhrase = () => {
   const dispatch = useDispatch();
   const productBySearchPhrase = useSelector(state => getProductBySearchPhrase(state, phrase));
 
-
-  // useEffect(() => {
-  //   dispatch(loadSearchedProductsRequest(phrase));
-  // }, [dispatch]);
-  
   return (
     <div>
       <MainProducts products={productBySearchPhrase} />

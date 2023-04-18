@@ -17,6 +17,7 @@ import { PassportModule } from '@nestjs/passport';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import configuration from 'config/configuration';
 
 @Module({
   imports: [
@@ -26,9 +27,12 @@ import { join } from 'path';
     AuthModule,
     PrismaModule,
     PassportModule,
-    ConfigModule.forRoot({  isGlobal: true }),
+    ConfigModule.forRoot({
+      load: [configuration],
+      isGlobal: true,
+    }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '../../', 'client', 'build'),
+      rootPath: join(__dirname, '../../', 'client', 'build', "client/build", "index.html"),
     }),
   ],
   controllers: [AppController],

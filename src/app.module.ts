@@ -31,6 +31,9 @@ import configuration from 'config/configuration';
       load: [configuration],
       isGlobal: true,
     }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '../../', 'client', 'build'),
+    }),
     // ServeStaticModule.forRoot({
     //   rootPath: join(__dirname, '../../', 'client', 'build'),
     // }),

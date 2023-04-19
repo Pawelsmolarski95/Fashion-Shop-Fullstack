@@ -34,9 +34,6 @@ import configuration from 'config/configuration';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../../', 'client', 'build'),
     }),
-    // ServeStaticModule.forRoot({
-    //   rootPath: join(__dirname, '../../', 'client', 'build'),
-    // }),
   ],
   controllers: [AppController],
   providers: [AppService],

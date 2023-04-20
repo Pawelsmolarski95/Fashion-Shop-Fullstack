@@ -2,15 +2,19 @@ import React, {  useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai';
 import { Popover } from '@headlessui/react';
 import { ShoppingBagIcon, User, UserIcon } from '@heroicons/react/24/outline';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IMGS_URL } from '../../../config';
 
 const NavBar = ({ cart }) => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(!open);
   };
 
+  const handleSearch = () => {
+    navigate('/product/searchphrase/' + `${searchValue}`)
+  }
   const [openCart, setOpenCart] = useState(false);
 
   const [searchValue, setSearchValue] = useState('');
@@ -34,6 +38,12 @@ const NavBar = ({ cart }) => {
             value={searchValue}
             onChange={(event) => setSearchValue(event.target.value)}
             className="rounded-full font-serif border-gray-500 border-[1.5px] text-[13px] text-gray-00 px-1 py-[2px] lg:px-8 placeholder-gray-600 bg-inherit outline-none"
+            onKeyDown={(event) => {
+              if (event.keyCode === 13) { 
+                event.preventDefault(); 
+                handleSearch(); 
+              }
+            }}
           />
           <Link to={'/product/searchphrase/' + `${searchValue}`}>
             <div className="absolute right-2 top-[50%] translate-y-[-50%] cursor-pointer">

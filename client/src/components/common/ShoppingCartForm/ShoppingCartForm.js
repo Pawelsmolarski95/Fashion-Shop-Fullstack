@@ -21,6 +21,7 @@ const ShoppingCartForm = ({ adress, setAdress, handleChange }) => {
               value={adress.firstName}
               onChange={handleChange}
               autoComplete="given-name"
+              requiredv
               className="block pl-1 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
@@ -41,6 +42,7 @@ const ShoppingCartForm = ({ adress, setAdress, handleChange }) => {
               onChange={handleChange}
               id="last-name"
               autoComplete="family-name"
+              required
               className="pl-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
@@ -81,6 +83,7 @@ const ShoppingCartForm = ({ adress, setAdress, handleChange }) => {
               onChange={handleChange}
               id="country"
               autoComplete="country"
+              required
               className=" pl-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
@@ -101,6 +104,7 @@ const ShoppingCartForm = ({ adress, setAdress, handleChange }) => {
               onChange={handleChange}
               id="street-address"
               autoComplete="street-address"
+              required
               className=" pl-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
@@ -141,6 +145,7 @@ const ShoppingCartForm = ({ adress, setAdress, handleChange }) => {
               onChange={handleChange}
               id="region"
               autoComplete="address-level1"
+              required
               className=" pl-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
@@ -161,6 +166,7 @@ const ShoppingCartForm = ({ adress, setAdress, handleChange }) => {
               onChange={handleChange}
               id="postal-code"
               autoComplete="postal-code"
+              required
               className=" pl-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>

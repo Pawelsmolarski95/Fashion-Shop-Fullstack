@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {  useNavigate, useParams } from 'react-router-dom';
-import {  useState } from 'react';
-import {
-  addToCart,
-} from '../../../redux/cartSlice';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { addToCart } from '../../../redux/cartSlice';
 import { getProductById } from '../../../redux/productsSlice';
 import { IMGS_URL } from '../../../config';
+import Rating from '../../common/Ratings/Ratings';
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -113,84 +112,7 @@ const SingleProduct = () => {
                   ${product.price}
                 </p>
 
-                <div className="mt-6">
-                  <h3 className="sr-only">Reviews</h3>
-                  <div className="flex items-center">
-                    <div className="flex items-center">
-                      <svg
-                        className="text-gray-900 h-5 w-5 flex-shrink-0"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-
-                      <svg
-                        className="text-gray-900 h-5 w-5 flex-shrink-0"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-
-                      <svg
-                        className="text-gray-900 h-5 w-5 flex-shrink-0"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-
-                      <svg
-                        className="text-gray-900 h-5 w-5 flex-shrink-0"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-
-                      <svg
-                        className="text-gray-200 h-5 w-5 flex-shrink-0"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <p className="sr-only">4 out of 5 stars</p>
-                    <a
-                      href="#"
-                      className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
-                    >
-                      117 reviews
-                    </a>
-                  </div>
-                </div>
+                <Rating />
 
                 <form className="mt-10">
                   <div>
@@ -205,7 +127,7 @@ const SingleProduct = () => {
                             name="color-choice"
                             value="White"
                             onChange={(e) => setColor(e.target.value)}
-                            className="sr-only"
+                            className="sr-only peer "
                             aria-labelledby="color-choice-0-label"
                           />
                           <span id="color-choice-0-label" className="sr-only">
@@ -214,7 +136,7 @@ const SingleProduct = () => {
                           </span>
                           <span
                             aria-hidden="true"
-                            className="h-8 w-8 bg-white rounded-full border border-black border-opacity-10"
+                            className="h-8 w-8 bg-white rounded-full border border-black border-opacity-10 peer-checked:scale-150"
                           ></span>
                         </label>
 
@@ -223,7 +145,7 @@ const SingleProduct = () => {
                             type="radio"
                             name="color-choice"
                             value="Gray"
-                            className="sr-only"
+                            className="sr-only peer"
                             onChange={(e) => setColor(e.target.value)}
                             aria-labelledby="color-choice-1-label"
                           />
@@ -233,7 +155,7 @@ const SingleProduct = () => {
                           </span>
                           <span
                             aria-hidden="true"
-                            className="h-8 w-8 bg-gray-200 rounded-full border border-black border-opacity-10"
+                            className="h-8 w-8 bg-gray-200 rounded-full border border-black border-opacity-10  peer-checked:scale-150"
                           ></span>
                         </label>
 
@@ -242,7 +164,7 @@ const SingleProduct = () => {
                             type="radio"
                             name="color-choice"
                             value="Black"
-                            className="sr-only"
+                            className="sr-only peer"
                             onClick={(e) => setColor(e.target.value)}
                             aria-labelledby="color-choice-2-label"
                           />
@@ -252,7 +174,7 @@ const SingleProduct = () => {
                           </span>
                           <span
                             aria-hidden="true"
-                            className="h-8 w-8 bg-gray-900 rounded-full border border-black border-opacity-10"
+                            className="h-8 w-8 bg-gray-900 rounded-full border border-black border-opacity-10  peer-checked:scale-150"
                           ></span>
                         </label>
                       </div>
@@ -275,21 +197,21 @@ const SingleProduct = () => {
                     <fieldset className="mt-4">
                       <legend className="sr-only">Choose a size</legend>
                       <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                        <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
+                        <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 peer-checked:bg-gray-50  focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
                           <input
                             type="radio"
                             name="size-choice"
                             value="XXS"
                             disabled={product.size !== 'XXS'}
                             onChange={(e) => setSize(e.target.value)}
-                            className="sr-only"
+                            className="sr-only peer"
                             aria-labelledby="size-choice-0-label"
                           />
                           <span id="size-choice-0-label">XXS</span>
                           {product.size !== 'XXS' ? (
                             <span
                               aria-hidden="true"
-                              className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
+                              className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200 peer-checked:bg-gray-50 "
                             >
                               <svg
                                 className="absolute inset-0 h-full w-full stroke-2 text-gray-200"
@@ -333,13 +255,13 @@ const SingleProduct = () => {
                           </span>
                         </label>
 
-                        <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
+                        <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 peer-checked:bg-gray-50  focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
                           <input
                             type="radio"
                             name="size-choice"
                             value="XS"
                             disabled={product.size !== 'XS'}
-                            className="sr-only"
+                            className="sr-only peer"
                             onChange={(e) => setSize(e.target.value)}
                             aria-labelledby="size-choice-1-label"
                           />
@@ -373,14 +295,14 @@ const SingleProduct = () => {
                           )}
                         </label>
 
-                        <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
+                        <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase peer-checked:bg-gray-50   hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
                           <input
                             type="radio"
                             name="size-choice"
                             value="S"
                             disabled={product.size !== 'S'}
                             onChange={(e) => setSize(e.target.value)}
-                            className="sr-only"
+                            className="sr-only peer"
                             aria-labelledby="size-choice-2-label"
                           />
                           <span id="size-choice-2-label">S</span>
@@ -413,14 +335,14 @@ const SingleProduct = () => {
                           )}
                         </label>
 
-                        <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
+                        <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm peer-checked:bg-gray-50  font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
                           <input
                             type="radio"
                             name="size-choice"
                             value="M"
                             disabled={product.size !== 'M'}
                             onChange={(e) => setSize(e.target.value)}
-                            className="sr-only"
+                            className="sr-only peer "
                             aria-labelledby="size-choice-3-label"
                           />
                           <span id="size-choice-3-label">M</span>
@@ -453,14 +375,14 @@ const SingleProduct = () => {
                           )}
                         </label>
 
-                        <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
+                        <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm peer-checked:bg-gray-50  font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
                           <input
                             type="radio"
                             name="size-choice"
                             value="L"
                             disabled={product.size !== 'L'}
                             onChange={(e) => setSize(e.target.value)}
-                            className="sr-only"
+                            className="sr-only peer"
                             aria-labelledby="size-choice-4-label"
                           />
                           <span id="size-choice-4-label">L</span>
@@ -493,24 +415,26 @@ const SingleProduct = () => {
                           )}
                         </label>
 
-                        <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
+                        <label className="group  peer-checked:bg-gray-300 relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase   hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
                           <input
                             type="radio"
                             name="size-choice"
                             value="XL"
                             disabled={product.size !== 'XL'}
                             onChange={(e) => setSize(e.target.value)}
-                            className="sr-only"
+                            className="sr-only peer"
                             aria-labelledby="size-choice-5-label"
+
                           />
-                          <span id="size-choice-5-label">XL</span>
+                         
+                          <span id="size-choice-5-label border-red-500  ">XL</span>
                           {product.size !== 'XL' ? (
                             <span
                               aria-hidden="true"
-                              className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
+                              className="pointer-events-none absolute -inset-px rounded-md border-2"
                             >
                               <svg
-                                className="absolute inset-0 h-full w-full stroke-2 text-gray-200"
+                                className="absolute inset-0 h-full w-full stroke-2 text-gray-200 "
                                 viewBox="0 0 100 100"
                                 preserveAspectRatio="none"
                                 stroke="currentColor"
@@ -532,14 +456,14 @@ const SingleProduct = () => {
                           )}
                         </label>
 
-                        <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
+                        <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase peer-checked:bg-gray-50  hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
                           <input
                             type="radio"
                             name="size-choice"
                             value="2XL"
                             disabled={product.size !== '2XL'}
                             onChange={(e) => setSize(e.target.value)}
-                            className="sr-only"
+                            className="sr-only peer"
                             aria-labelledby="size-choice-6-label"
                           />
                           <span id="size-choice-6-label">2XL</span>
@@ -571,14 +495,14 @@ const SingleProduct = () => {
                           )}
                         </label>
 
-                        <label className="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
+                        <label className="group relative flex items-center justify-center rounded-md border peer-checked:bg-gray-50  py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
                           <input
                             type="radio"
                             name="size-choice"
                             value="3XL"
                             disabled={product.size !== '3XL'}
                             onChange={(e) => setSize(e.target.value)}
-                            className="sr-only"
+                            className="sr-only peer"
                             aria-labelledby="size-choice-7-label"
                           />
                           <span id="size-choice-7-label">3XL</span>

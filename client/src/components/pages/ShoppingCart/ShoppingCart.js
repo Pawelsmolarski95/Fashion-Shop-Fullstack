@@ -14,7 +14,6 @@ import { Link } from 'react-router-dom';
 const ShoppingCart = () => {
   const cart = useSelector((state) => state.cart);
 
-  console.log(cart);
   const [comment, setComment] = useState('');
 
   const dispatch = useDispatch();
